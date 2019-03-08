@@ -1,14 +1,22 @@
 package com.example.regroup;
 
-import android.content.Intent;
+import android.security.keystore.SecureKeyImportUnavailableException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import com.example.regroup.Events.EventRegistration;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +25,8 @@ private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.basicReadWrite();
         setContentView(R.layout.activity_main);
-
-        Intent registerEventIntent = new Intent(MainActivity.this, EventRegistration.class);
-        MainActivity.this.startActivity(registerEventIntent);
     }
 
     @Override
@@ -28,26 +34,19 @@ private FirebaseAuth mAuth;
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        basicReadWrite();
         //updateUI(currentUser);
     }
 
     public void basicReadWrite() {
-
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
         // [START write_message]
         // Write a message to the database
-       /* FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("chats/messages");
 
         //myRef.child("messages").child("m1").setValue("pirma zinute");
         //myRef.setValue("pirma zinute");
         myRef.child("m1").child("s").setValue("ant zinute");
-        myRef.child("m1").child("c").setValue("araf zinute");
+        myRef.child("m1").child("c").setValue("ara zinute");
         mAuth = FirebaseAuth.getInstance();
 
         // myRef.setValue("Hello, World jhj!");
@@ -69,6 +68,6 @@ private FirebaseAuth mAuth;
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
-        });*/
+        });
     }
 }

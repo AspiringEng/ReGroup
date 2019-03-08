@@ -4,7 +4,6 @@ import com.example.regroup.Users.user;
 
 import java.sql.Date;
 
-// Indrė. Sukurta Event klasė
 public class Event {
 
 
@@ -46,7 +45,6 @@ public class Event {
     public void setOrganizaror(user organizator){
         this.organizer = organizator;
     }
-
 
 
     @Override
