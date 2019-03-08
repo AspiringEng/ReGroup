@@ -11,6 +11,11 @@ public class Event {
     private String name;
     private Date date;
     private user organizer;
+
+    public Event(){
+
+    }
+
     public Event(String eventId, String name, Date date, user organizator){
         this.eventId = eventId;
         this.name = name;
@@ -46,5 +51,13 @@ public class Event {
         this.organizer = organizator;
     }
 
-
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId='" + eventId + '\'' +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", organizer=" + organizer +
+                '}';
+    }
 }
