@@ -1,5 +1,6 @@
 package com.example.regroup;
 
+import android.security.keystore.SecureKeyImportUnavailableException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ private FirebaseAuth mAuth;
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        int a;
         //updateUI(currentUser);
     }
 
