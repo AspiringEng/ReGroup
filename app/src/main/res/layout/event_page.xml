@@ -6,4 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".Events.EventPage">
 
+    <ImageView
+        android:id="@+id/eventImageView"
+        android:layout_width="384dp"
+        android:layout_height="281dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="520dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <TextView
+        android:id="@+id/eventTime"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="540dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="560dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="365dp" />
+
+    <TextView
+        android:id="@+id/eventCity"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="600dp"
+        android:text="Place"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="412dp" />
+
+    <TextView
+        android:id="@+id/eventDescription"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="620dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="870dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:text="Desciption"
+        android:textSize="17dp"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="459dp" />
+
+
+
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>

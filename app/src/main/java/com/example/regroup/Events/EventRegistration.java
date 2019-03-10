@@ -1,65 +1,108 @@
 package com.example.regroup.Events;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.view.View;
+import android.widget.Toast;
+
 import com.example.regroup.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EventRegistration extends AppCompatActivity {
 
 
-    private static final String TAG = "MainActivity";  //gal...
-    private FirebaseAuth mAuth;
+    private static final String KEY_NAME = "name";
+    private static final String KEY_DATE = "date";
+    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_TIME = "time";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONE = "phone";
+
+    private static final String TAG = "EventRegistration";
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private EditText nameField;
+    private EditText descriptionField;
+    private EditText dateField;
+    private EditText timeField;
+    private EditText emailField;
+    private EditText phoneField;
+   // private Button buttonAddEvent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_registration);
 
-        final EditText name = (EditText) findViewById(R.id.eventName);
-        final EditText description = (EditText) findViewById(R.id.eventDescription);
-        final EditText date = (EditText) findViewById(R.id.eventDate);
-        final EditText time = (EditText) findViewById(R.id.eventTime);
-        final EditText email = (EditText) findViewById(R.id.eventEmail);
-        final EditText phone = (EditText) findViewById(R.id.eventphone);
-        final Button buttonAddEvent = (Button) findViewById(R.id.buttonAddEvent);
+
+        nameField = (EditText) findViewById(R.id.eventName);
+        descriptionField = (EditText) findViewById(R.id.eventDescription);
+        dateField = (EditText) findViewById(R.id.eventDate);
+        timeField = (EditText) findViewById(R.id.eventTime);
+        emailField = (EditText) findViewById(R.id.eventEmail);
+        phoneField = (EditText) findViewById(R.id.eventphone);
+        //buttonAddEvent = (Button) findViewById(R.id.buttonAddEvent);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd");
     java.util.Date uDate;
 
-    public void seeWholeEvent(){
+    public void createEvent(View v){
+        String name = nameField.getText().toString();
+        String description = descriptionField.getText().toString();
+        String date = dateField.getText().toString();
+        String time = timeField.getText().toString();
+        String phone = phoneField.getText().toString();
+        String email = emailField.getText().toString();
+
+        Map<String, Object> event = new HashMap<>();
+        event.put(KEY_NAME, name);
+        event.put(KEY_DESCRIPTION, description);
+        event.put(KEY_DATE, date);
+        event.put(KEY_TIME, time);
+        event.put(KEY_PHONE, phone);
+        event.put(KEY_EMAIL, email);
 
 
-
-
-
-
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        Event newEvent = new Event("2", "vardas", new java.sql.Date(uDate.getTime()), null);
-
-        myRef.child(newEvent.getEventId()).setValue(newEvent.toString());
-
-        myRef.setValue("Hello, World!");
+        db.collection("events").document("event1").set(event)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(EventRegistration.this, "event saved", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EventRegistration.this, "ERROR", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
     }
 
 
