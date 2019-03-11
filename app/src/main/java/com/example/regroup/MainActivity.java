@@ -38,7 +38,7 @@ private FirebaseAuth mAuth;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
+        myRef.setValue("Hellllo, World!");
         // [START write_message]
         // Write a message to the database
        /* FirebaseDatabase database = FirebaseDatabase.getInstance();
