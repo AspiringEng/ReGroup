@@ -15,6 +15,7 @@ public class Profile extends AppCompatActivity implements NameEnterDialog.NameEn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //komentaras
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
