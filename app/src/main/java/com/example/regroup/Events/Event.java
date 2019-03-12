@@ -45,8 +45,6 @@ public class Event {
     public void setOrganizaror(user organizator){
         this.organizer = organizator;
     }
-
-
     @Override
     public String toString() {
         return "Event{" +
@@ -57,3 +55,5 @@ public class Event {
                 '}';
     }
 }
+
+
