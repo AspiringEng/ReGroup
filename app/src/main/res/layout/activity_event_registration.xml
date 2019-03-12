@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Events.EventRegistration"
-    tools:ignore="ExtraText">
+    tools:context=".EventRegistration">
 
     <Button
         android:id="@+id/buttonAddEvent"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginTop="648dp"
-        android:text="Button"
+        android:text="Create Event"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,12 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="452dp"
+        android:contentDescription="data"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="364dp"
         tools:text="yyyy:mm:dd" />
 
     <EditText
@@ -81,8 +79,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Contact Phone"
-    tools:layout_editor_absoluteX="97dp"
-    tools:layout_editor_absoluteY="537dp" />
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="537dp" />
 
     <EditText
         android:id="@+id/eventDescription"
@@ -90,11 +88,13 @@
         android:layout_height="201dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="140dp"
+        android:contentDescription="Describe Your Event"
         android:ems="10"
         android:inputType="textPersonName"
+        android:singleLine="false"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Describe Your Event" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/eventEmail"
@@ -109,6 +109,4 @@
         tools:text="Contack e-mail"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="454dp" />
-
-
 </android.support.constraint.ConstraintLayout>

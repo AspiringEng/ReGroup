@@ -4,7 +4,6 @@ import com.example.regroup.Users.user;
 
 import java.sql.Date;
 
-// Indrė. Sukurta Event klasė
 public class Event {
 
 
@@ -46,9 +45,6 @@ public class Event {
     public void setOrganizaror(user organizator){
         this.organizer = organizator;
     }
-
-
-
     @Override
     public String toString() {
         return "Event{" +
@@ -59,3 +55,18 @@ public class Event {
                 '}';
     }
 }
+
+
+<<<<<<< HEAD
+=======
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId='" + eventId + '\'' +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", organizer=" + organizer +
+                '}';
+    }
+}
+>>>>>>> dcf6ae49efd0a19a972b910874e46d3cf90827f7

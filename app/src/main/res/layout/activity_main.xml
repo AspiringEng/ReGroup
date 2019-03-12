@@ -10,9 +10,13 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginBottom="460dp"
-        android:text="button"
+        android:layout_marginStart="127dp"
+        android:layout_marginBottom="522dp"
+<<<<<<< HEAD
+        android:onClick="startEventRegistration"
+=======
+>>>>>>> dcf6ae49efd0a19a972b910874e46d3cf90827f7
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

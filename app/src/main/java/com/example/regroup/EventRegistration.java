@@ -1,23 +1,16 @@
-package com.example.regroup.Events;
+package com.example.regroup;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.regroup.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +27,7 @@ public class EventRegistration extends AppCompatActivity {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
 
-    private static final String TAG = "EventRegistration";
+    private static final String TAG = "EventRegistrationdd";
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -44,12 +37,12 @@ public class EventRegistration extends AppCompatActivity {
     private EditText timeField;
     private EditText emailField;
     private EditText phoneField;
-   // private Button buttonAddEvent;
+    // private Button buttonAddEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_registration);
+        setContentView(R.layout.activity_event_registration);
 
 
         nameField = (EditText) findViewById(R.id.eventName);
@@ -72,7 +65,7 @@ public class EventRegistration extends AppCompatActivity {
     SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd");
     java.util.Date uDate;
 
-    public void createEvent(View v){
+    public void createEvent(View v) {
         String name = nameField.getText().toString();
         String description = descriptionField.getText().toString();
         String date = dateField.getText().toString();
@@ -104,7 +97,4 @@ public class EventRegistration extends AppCompatActivity {
                     }
                 });
     }
-
-
-
 }
