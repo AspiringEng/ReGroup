@@ -17,10 +17,9 @@ import java.text.SimpleDateFormat;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";  //gal...
-private FirebaseAuth mAuth;
 
-
-
+    private FirebaseAuth mAuth;
+  
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

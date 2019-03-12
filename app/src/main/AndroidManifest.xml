@@ -25,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Profile">
+            <intent-filter>
+                <action android:name="android.intent.action.CHOOSER"></action>
+                <category android:name="android.intent.category.TAB"></category>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Registration"
             android:parentActivityName=".MainActivity" />
