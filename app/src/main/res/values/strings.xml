@@ -91,4 +91,10 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="place">Place</string>
+    <string name="desciption">Desciption</string>
+    <string name="time">Time</string>
+    <string name="name">Name</string>
+    <string name="title_activity_event_page">EventPage</string>
+    <string name="button">Button</string>
 </resources>

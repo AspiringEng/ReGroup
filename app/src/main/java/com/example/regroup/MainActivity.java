@@ -1,8 +1,10 @@
 package com.example.regroup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.example.regroup.Events.Event;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +54,13 @@ private FirebaseAuth mAuth;
 
         mAuth = FirebaseAuth.getInstance();
     }
+
+    public void startEventRegistration(View view) {
+        Intent eventRegistration = new Intent(this, EventRegistration.class);
+        startActivity(eventRegistration);
+
+    }
+
 
 
 
