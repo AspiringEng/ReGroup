@@ -98,4 +98,7 @@
     <string name="name">Name</string>
     <string name="title_activity_event_page">EventPage</string>
     <string name="button">button</string>
+    <string name="describe_your_event">Describe Your Event</string>
+    <string name="title_activity_registration_event">RegistrationEvent</string>
+    <string name="description">description</string>
 </resources>

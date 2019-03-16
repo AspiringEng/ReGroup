@@ -1,14 +1,19 @@
-package com.example.regroup;
+package com.example.regroup.Events;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,8 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventRegistration extends AppCompatActivity {
-
+public class RegistrationEvent extends AppCompatActivity {
 
     private static final String KEY_NAME = "name";
     private static final String KEY_DATE = "date";
@@ -37,28 +41,36 @@ public class EventRegistration extends AppCompatActivity {
     private EditText timeField;
     private EditText emailField;
     private EditText phoneField;
-    // private Button buttonAddEvent;
+    private EditText adressField;
+     private Button buttonAddEvent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_registration);
+        setContentView(R.layout.activity_registration_event);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
 
-        nameField = (EditText) findViewById(R.id.eventName);
-        descriptionField = (EditText) findViewById(R.id.eventDescription);
-        dateField = (EditText) findViewById(R.id.eventDate);
-        timeField = (EditText) findViewById(R.id.eventTime);
-        emailField = (EditText) findViewById(R.id.eventEmail);
-        phoneField = (EditText) findViewById(R.id.eventphone);
-        //buttonAddEvent = (Button) findViewById(R.id.buttonAddEvent);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-
+        nameField = (EditText) findViewById(R.id.ERName);
+        descriptionField = (EditText) findViewById(R.id.ERdescription);
+        dateField = (EditText) findViewById(R.id.ERdate);
+        timeField = (EditText) findViewById(R.id.ERtime);
+        emailField = (EditText) findViewById(R.id.ERmail);
+        phoneField = (EditText) findViewById(R.id.ERphone);
+        phoneField = (EditText) findViewById(R.id.ERphone);
+        adressField = (EditText) findViewById(R.id.ERadress);
+        buttonAddEvent = (Button) findViewById(R.id.ERaddEvent);
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -86,13 +98,13 @@ public class EventRegistration extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(EventRegistration.this, "event saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationEvent.this, "event saved", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(EventRegistration.this, "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationEvent.this, "ERROR", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, e.toString());
                     }
                 });

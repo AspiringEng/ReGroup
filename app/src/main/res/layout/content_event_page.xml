@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/eventImageView"
+        android:id="@+id/EImage"
         android:layout_width="384dp"
         android:layout_height="281dp"
         android:layout_marginStart="15dp"
@@ -20,63 +20,126 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/eventName"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="480dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="520dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textSize="35dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="307dp" />
 
-    <TextView
-        android:id="@+id/eventTime"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="540dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="560dp"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
-        android:text="Time"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="365dp" />
-
-    <TextView
-        android:id="@+id/eventCity"
-        android:layout_width="376dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="580dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="600dp"
-        android:text="Place"
-        android:textAlignment="center"
-        android:textSize="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="412dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/eventDescription"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="620dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="870dp"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:text="Desciption"
-        android:textSize="17sp"
-        android:textAlignment="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="459dp" />
+        <TextView
+            android:id="@+id/EName"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="name"
+            android:inputType="text"
+            android:textColorHint="@color/common_google_signin_btn_text_light_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/Edescription"
+            android:layout_width="364dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Edate"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="date"
+            android:inputType="date"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Etime"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="time"
+            android:inputType="time"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Ecity"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="city"
+            android:inputType="text"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Eadress"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="address"
+            android:inputType="text"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Email"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="e-mail"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Ephone"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="phone number"
+            android:inputType="phone"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
