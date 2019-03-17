@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.regroup.Events.Event;
+import com.example.regroup.Events.EventPage;
 import com.example.regroup.Events.RegistrationEvent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

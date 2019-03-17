@@ -123,21 +123,29 @@
             android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"/>
 
         <Button
+            android:id="@+id/ERaddimage"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="addImage"
+            android:text="Add Image" />
+
+        <ImageView
+            android:id="@+id/ERimage"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
             android:id="@+id/ERaddEvent"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="56dp"
             android:onClick="createEvent"
-            android:text="Button" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="364dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="56dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:text="Create Event" />
 
 
     </LinearLayout>

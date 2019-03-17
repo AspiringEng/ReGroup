@@ -101,4 +101,5 @@
     <string name="describe_your_event">Describe Your Event</string>
     <string name="title_activity_registration_event">RegistrationEvent</string>
     <string name="description">description</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -1,9 +1,12 @@
 package com.example.regroup.Events;
 
 import com.example.regroup.Users.user;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.auth.User;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 public class Event {
 
@@ -11,7 +14,7 @@ public class Event {
     private String eventId;
     private String name;
     private Date date;
-    private user organizer;
+    private String organizer;
     private Time time;
     private String address;
     private String city;
@@ -20,25 +23,40 @@ public class Event {
     private String email;
 
 
-    public Event(String eventId, String name, Date date, user organizator){
+    private String imageRef;
+
+     public Event(){}
+
+    public Event(String eventId, String name, Date date, String organizator){
         this.eventId = eventId;
         this.name = name;
         this.date = date;
         this.organizer = organizator;
     }
 
+     public Event(String eventId, String name) {
+         this.eventId = eventId;
+         this.name = name;
+    }
+    SimpleDateFormat dateForamt = new SimpleDateFormat("dd/MM/yyyy");
+    final String timeFromat = " hh:mm";
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "eventId='" + eventId + '\'' +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                ", organizer=" + organizer +
-                '}';
+    public Event(String eventId, String name, String date, String organizer, String time, String address, String city, String description, String phone, String email, String imageRef) {
+        this.eventId = eventId;
+        this.name = name;
+        //this.date = Date.valueOf(dateForamt.format(date));
+        this.organizer = organizer;
+       // this.time = Time.valueOf(String.format(time));
+        this.address = address;
+        this.city = city;
+        this.description = description;
+        this.phone = phone;
+        this.email = email;
+        this.imageRef = imageRef;
     }
 
-    public void setOrganizer(user organizer) {
+
+    public void setOrganizer(String organizer) {
         this.organizer = organizer;
     }
     public Time getTime() {
@@ -95,13 +113,24 @@ public class Event {
     public void setDate(Date date){
         this.date = date;
     }
-    public user getOrganizer(){
+    public String getOrganizer(){
         return organizer;
     }
-    public void setOrganizaror(user organizator){
+    public void setOrganizaror(String organizator){
         this.organizer = organizator;
     }
+    public String getImageRef() {
+        return imageRef;
+    }
+    public void setImageRef(String imageRef) {
+        this.imageRef = imageRef;
+    }
 
+
+    @Override
+    public String toString() {
+        return "Event{" + "eventId='" + eventId + '\'' + ", name='" + name + '\'' + ", date=" + date + ", organizer=" + organizer + ", time=" + time + ", address='" + address + '\'' + ", city='" + city + '\'' + ", description='" + description + '\'' + ", phone='" + phone + '\'' + ", email='" + email + '\'' + '}';
+    }
 }
 
 
