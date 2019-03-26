@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">ReGroup</string>
+    <string name="app_name">ReGroup_me</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_myProfile">MyProfile</string>
 </resources>
