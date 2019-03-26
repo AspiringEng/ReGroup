@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         app:itemIconTint="@android:color/holo_purple"
@@ -32,10 +33,15 @@
 </android.support.constraint.ConstraintLayout>
 >>>>>>> Indre
 =======
+=======
+>>>>>>> parent of 4dd7aa1... is Roko
         android:layout_marginStart="127dp"
         android:layout_marginBottom="522dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
+<<<<<<< HEAD
+>>>>>>> parent of 4dd7aa1... is Roko
+=======
 >>>>>>> parent of 4dd7aa1... is Roko
