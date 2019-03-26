@@ -1,5 +1,6 @@
 <resources>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="app_name">ReGroup_me</string>
     <string name="nav_home">Home</string>
     <string name="nav_dashboard">Dashboard</string>
@@ -110,4 +111,7 @@
     <string name="description">description</string>
     <string name="todo">TODO</string>
 >>>>>>> Indre
+=======
+    <string name="app_name">ReGroup</string>
+>>>>>>> parent of 4dd7aa1... is Roko
 </resources>
