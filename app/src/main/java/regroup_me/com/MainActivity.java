@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
 
                     switch (menuItem.getItemId()) {
-                        case R.
+                        case R.id.nav_matches:
                             selectedFragment = new MatchesFragment();
                             break;
                         case R.id.nav_events:
