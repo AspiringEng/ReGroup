@@ -201,4 +201,3 @@ public class RegistrationEvent extends AppCompatActivity {
     }
 
 }
-

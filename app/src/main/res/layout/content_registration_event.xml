@@ -128,7 +128,8 @@
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:onClick="addImage"
-            android:text="Add Image" />
+            android:text="Add Image"
+            tools:ignore="OnClick" />
 
         <ImageView
             android:id="@+id/ERimage"
