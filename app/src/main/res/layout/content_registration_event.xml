@@ -1,48 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-    <ImageView
-        android:id="@+id/EImage"
-        android:layout_width="384dp"
-        android:layout_height="281dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="450dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimary"
-        android:contentDescription="@string/todo" />
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Events.RegistrationEvent"
+    tools:showIn="@layout/activity_registration_event">
 
 
     <LinearLayout
-        android:layout_width="364dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible">
 
-        <TextView
-            android:id="@+id/EName"
+
+        <EditText
+            android:id="@+id/ERName"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="56dp"
             android:ems="10"
             android:hint="name"
             android:inputType="text"
@@ -51,10 +31,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/Edescription"
+        <EditText
+            android:id="@+id/ERdescription"
             android:layout_width="364dp"
-            android:layout_height="121dp"
+            android:layout_height="124dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="56dp"
             android:ems="10"
@@ -64,8 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Edate"
+        <EditText
+            android:id="@+id/ERdate"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -77,8 +57,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Etime"
+        <EditText
+            android:id="@+id/ERtime"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -90,8 +70,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Ecity"
+        <EditText
+            android:id="@+id/ERcity"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -103,8 +83,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Eadress"
+        <EditText
+            android:id="@+id/ERadress"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -116,31 +96,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Email"
+        <EditText
+            android:id="@+id/ERmail"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="56dp"
             android:ems="10"
-            android:hint="e-mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="e-mail"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"/>
 
-        <TextView
-            android:id="@+id/Ephone"
+        <EditText
+            android:id="@+id/ERphone"
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="56dp"
             android:ems="10"
-            android:hint="phone number"
-            android:inputType="phone"
-            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="phone"
+            android:hint="phone number"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"/>
+
+        <Button
+            android:id="@+id/ERaddimage"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="addImage"
+            android:text="Add Image" />
+
+        <ImageView
+            android:id="@+id/ERimage"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/ERaddEvent"
+            android:layout_width="364dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp"
+            android:onClick="createEvent"
+            android:text="Create Event" />
+
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

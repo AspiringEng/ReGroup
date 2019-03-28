@@ -12,12 +12,13 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".Events.RegistrationEvent"
+            android:label="@string/title_activity_registration_event"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Events.EventPage"
             android:label="@string/title_activity_event_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EventRegistration"
-            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Profile">
             <intent-filter>
-                <action android:name="android.intent.action.CHOOSER"></action>
-                <category android:name="android.intent.category.TAB"></category>
+                <action android:name="android.intent.action.CHOOSER" />
+
+                <category android:name="android.intent.category.TAB" />
             </intent-filter>
         </activity>
         <activity

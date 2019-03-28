@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.regroup.Events.Event;
+import com.example.regroup.Events.EventPage;
+import com.example.regroup.Events.RegistrationEvent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startEventRegistration(View view) {
-        Intent eventRegistration = new Intent(this, EventRegistration.class);
+        Intent eventRegistration = new Intent(this, RegistrationEvent.class);
         startActivity(eventRegistration);
 
     }
