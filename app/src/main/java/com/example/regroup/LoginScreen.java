@@ -1,16 +1,25 @@
 package com.example.regroup;
 
+import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +31,26 @@ public class LoginScreen extends AppCompatActivity {
 
         Button btn = findViewById(R.id.button3);
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // When Login button is clicked, do something...
                 // Need to make it so when it's clicked it can't be clicked again until the credentials are checked and returned false
 
-                Toast.makeText(getApplicationContext(), "veikia", Toast.LENGTH_SHORT).show(); // Just for testing
+                String email = ((EditText)findViewById(R.id.editText2)).getText().toString();
+                String password = ((EditText)findViewById(R.id.editText3)).getText().toString();
+
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
