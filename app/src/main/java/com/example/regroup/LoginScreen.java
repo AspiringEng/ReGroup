@@ -1,5 +1,6 @@
 package com.example.regroup;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,10 +30,11 @@ public class LoginScreen extends AppCompatActivity {
         getSupportActionBar().hide(); // Hides the top action bar
         mAuth = FirebaseAuth.getInstance(); // initializing FirebaseAuth instance
 
-        Button btn = findViewById(R.id.button3);
+        Button loginButton = findViewById(R.id.button3);
+        Button registerButton = findViewById(R.id.button2);
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // When Login button is clicked, do something...
@@ -41,16 +43,30 @@ public class LoginScreen extends AppCompatActivity {
                 String email = ((EditText)findViewById(R.id.editText2)).getText().toString();
                 String password = ((EditText)findViewById(R.id.editText3)).getText().toString();
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
-                            return;
+                if(email.isEmpty() || password.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                startActivity(new Intent(LoginScreen.this, Profile.class));
+                                //Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    });
+                }
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
     }
