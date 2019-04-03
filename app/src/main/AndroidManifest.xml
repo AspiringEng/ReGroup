@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".UserRegistration"></activity>
         <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
