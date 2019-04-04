@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".UserRegistration"></activity>
+        <activity android:name=".LoginScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Events.RegistrationEvent"
             android:label="@string/title_activity_registration_event"
