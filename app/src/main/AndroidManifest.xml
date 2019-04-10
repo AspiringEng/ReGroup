@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Events.RegistrationEvent"
+            android:name=".Events.RegistrationEvent" ></activity>
             android:label="@string/title_activity_registration_event"
-            android:theme="@style/AppTheme.NoActionBar" />
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
-            android:name=".Events.EventPage"
-            android:label="@string/title_activity_event_page"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Events.EventPage" ></activity>
+?            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
