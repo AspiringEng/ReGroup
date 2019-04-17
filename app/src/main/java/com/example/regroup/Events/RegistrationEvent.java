@@ -45,7 +45,7 @@ public class RegistrationEvent extends AppCompatActivity {
     private static final String KEY_PHONE = "phone";
     private static final String KEY_IMAGE = "image";
 
-    private static final String TAG = "EventRegistrationdd";
+    private static final String TAG = "EventRegistrationd";
 
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
@@ -199,5 +199,4 @@ public class RegistrationEvent extends AppCompatActivity {
                     });
         }
     }
-
 }
