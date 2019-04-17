@@ -8,7 +8,7 @@ public class cards {
         this.name = name;
     }
 
-    public String getUserId() {
+    public String getUserId()  {
         return userId;
     }
 
