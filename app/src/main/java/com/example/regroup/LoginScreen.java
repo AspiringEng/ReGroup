@@ -51,11 +51,11 @@ public class LoginScreen extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                startActivity(new Intent(LoginScreen.this, Profile.class));
-                                //Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginScreen.this, Profile.class));
                         }
                     });
                 }
