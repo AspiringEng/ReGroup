@@ -22,6 +22,7 @@ public class Profile extends AppCompatActivity implements NameEnterDialog.NameEn
 
         txtv = findViewById(R.id.Name);
 
+
         txtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

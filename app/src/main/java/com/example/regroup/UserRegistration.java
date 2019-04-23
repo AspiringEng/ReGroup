@@ -95,7 +95,7 @@ public class UserRegistration extends AppCompatActivity {
                 if (task.isSuccessful())
                 {
                     Toast.makeText(getApplicationContext(), "User has been registered!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(UserRegistration.this, Profile.class));
+                    startActivity(new Intent(UserRegistration.this, MainActivity.class));
                 }
                 else
                 {
