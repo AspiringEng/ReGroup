@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";  //gal...
+    private String uid;
 
     private FirebaseAuth mAuth;
 
@@ -42,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new EventsFragment();
                             break;
                         case R.id.nav_myProfile:
-                            selectedFragment = new MyProfileFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("uid", uid);
+                            MyProfileFragment myProfileFragment = new MyProfileFragment();
+                            myProfileFragment.setArguments(bundle);
+                            selectedFragment = myProfileFragment;
                             break;
                         case R.id.nav_settings:
                             selectedFragment = new SettingsFragment();
@@ -66,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setSelectedItemId(R.id.nav_events);
         Log.d("main", "The onCreate() event");
         createEvent();
+
+        uid = getIntent().getStringExtra("uid");
+        System.out.println("uid of user on mainActivity: " + uid);
     }
 
 

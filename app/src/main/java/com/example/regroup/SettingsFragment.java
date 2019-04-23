@@ -34,6 +34,5 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public void openLogin(){
         Intent intent = new Intent(getActivity(), LoginScreen.class);
         startActivity(intent);
-
     }
 }

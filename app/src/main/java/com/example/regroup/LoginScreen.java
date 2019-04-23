@@ -1,7 +1,9 @@
 package com.example.regroup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class LoginScreen extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private static final String TAG = MainActivity.class.getSimpleName();
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +54,17 @@ public class LoginScreen extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                startActivity(new Intent(LoginScreen.this, Profile.class));
+
                                 //Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
+
                                 return;
                             }
+                            //Paema userio uid
+                            uid = mAuth.getUid();
+                            //Perduoda mainActivity uid, tam kad butu galima kitiems fragmentams
+                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            intent.putExtra("uid", uid);
+                            startActivity(intent);
                             Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -68,5 +78,7 @@ public class LoginScreen extends AppCompatActivity {
                 startActivity(new Intent(LoginScreen.this, UserRegistration.class));
             }
         });
+
+
     }
 }
