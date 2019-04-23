@@ -15,6 +15,7 @@ import com.example.regroup.Events.Event;
 import com.example.regroup.Events.EventPage;
 import com.example.regroup.Events.RegistrationEvent;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -72,7 +73,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main", "The onCreate() event");
         createEvent();
 
-        uid = getIntent().getStringExtra("uid");
+        /*Siek tiek pakeiciau, nes gan daznai uzluzdavo programa, kai nueidavau i
+          My Profile skilti - Arturas */
+        FirebaseUser currentFirebaseUser = mAuth.getInstance().getCurrentUser() ;
+        uid = currentFirebaseUser.getUid();
+
+        //uid = getIntent().getStringExtra("uid");
+
         System.out.println("uid of user on mainActivity: " + uid);
     }
 
