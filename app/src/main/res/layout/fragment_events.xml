@@ -9,8 +9,6 @@
     android:layout_centerVertical="true">
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +16,9 @@
         app:rotation_degrees="15.5"
         tools:context=".EventsFragment"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp">
+
+    </com.lorentzos.flingswipe.SwipeFlingAdapterView>
 
 
 

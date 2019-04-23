@@ -27,12 +27,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Date;
 import java.sql.Time;
 
 public class EventPage extends AppCompatActivity {
 
+    private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_DATE = "date";
     private static final String KEY_DESCRIPTION = "description";
@@ -71,13 +74,18 @@ public class EventPage extends AppCompatActivity {
 
 
 
+        Bundle b = getIntent().getExtras();
+        String id = ""; // or other values
+        if(b != null)
+            id = b.getString("key");
 
-        DocumentReference evenRef = db.collection("events").document("event1");
+
+        DocumentReference evenRef = db.collection("events").document(id);
         evenRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                  event[0] = new Event(
-                        documentSnapshot.getId(),
+                        documentSnapshot.getString(KEY_ID),
                         documentSnapshot.getString(KEY_NAME),
                         documentSnapshot.getString(KEY_DATE),
                         documentSnapshot.getString(KEY_ORG),
@@ -92,6 +100,7 @@ public class EventPage extends AppCompatActivity {
 
             }
         })
+
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -103,17 +112,25 @@ public class EventPage extends AppCompatActivity {
         //showEvent(event[0]);
 
 
+
         TextView nameField = findViewById(R.id.EName);
         TextView descriptionField = findViewById(R.id.Edescription);
         TextView dateField = findViewById(R.id.Edate);
         TextView timeField = findViewById(R.id.Etime);
         TextView emailField = findViewById(R.id.Email);
         TextView phoneField = findViewById(R.id.Ephone);
-        TextView adressField = findViewById(R.id.Eadress);
+        TextView addressField = findViewById(R.id.Eadress);
         TextView city = findViewById(R.id.Ecity);
         ImageView image = findViewById(R.id.EImage);
         nameField.setText(event[0].getName());
     }
+
+    public void ShowEvent(String id){
+
+
+    }
+
+
 
 
 }

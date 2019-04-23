@@ -37,6 +37,7 @@ import java.util.UUID;
 
 public class RegistrationEvent extends AppCompatActivity {
 
+    private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_DATE = "date";
     private static final String KEY_DESCRIPTION = "description";
@@ -65,7 +66,6 @@ public class RegistrationEvent extends AppCompatActivity {
     private Button buttonAddEvent;
     private Button buttonAddImage;
     private ImageView image;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +116,7 @@ public class RegistrationEvent extends AppCompatActivity {
         String email = emailField.getText().toString();
         String imageRef = UUID.randomUUID().toString();
         Map<String, Object> event = new HashMap<>();
+        event.put(KEY_ID, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
         event.put(KEY_NAME, name);
         event.put(KEY_DESCRIPTION, description);
         event.put(KEY_DATE, date);
@@ -124,11 +125,23 @@ public class RegistrationEvent extends AppCompatActivity {
         event.put(KEY_EMAIL, email);
         event.put(KEY_IMAGE, imageRef);
 
+        final String id  = name+date;
 
-        db.collection("events").document("event1").set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("events").document(id).set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(RegistrationEvent.this, "event saved", Toast.LENGTH_SHORT).show();
+
+                /*Intent intent = new Intent(getApplicationContext(), EventPage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);*/
+
+                Intent intent = new Intent(getApplicationContext(), EventPage.class);
+                Bundle b = new Bundle();
+                b.putString("key", id); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+                finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -142,15 +155,16 @@ public class RegistrationEvent extends AppCompatActivity {
 
     }
 
+
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
         {
@@ -163,7 +177,8 @@ public class RegistrationEvent extends AppCompatActivity {
             {
                 e.printStackTrace();
             }
-        }
+         }
+
     }
     private void uploadImage(String imageRef) {
 
