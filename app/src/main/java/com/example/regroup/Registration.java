@@ -35,7 +35,7 @@ public class Registration  extends AppCompatActivity implements View.OnClickList
 
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        button = (Button) findViewById(R.id.deleteProf);
+        button = (Button) findViewById(R.id.regReng);
         textView = (TextView) findViewById(R.id.editText);
 
         button.setOnClickListener(this);

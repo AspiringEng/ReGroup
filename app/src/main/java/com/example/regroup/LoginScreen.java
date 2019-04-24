@@ -48,11 +48,11 @@ public class LoginScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance(); // initializing FirebaseAuth instance
         final FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        // Auto-login if user already signed in before.
+        /*// Auto-login if user already signed in before.
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(LoginScreen.this, MainActivity.class));
             finish();
-        }
+        }*/
 
 
         Button loginButton = findViewById(R.id.button3);
