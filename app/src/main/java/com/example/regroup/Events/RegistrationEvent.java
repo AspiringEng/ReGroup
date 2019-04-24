@@ -1,7 +1,9 @@
 package com.example.regroup.Events;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,11 +14,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.regroup.R;
@@ -31,11 +36,14 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class RegistrationEvent extends AppCompatActivity {
+import static android.app.DatePickerDialog.*;
+
+public class RegistrationEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
@@ -45,6 +53,8 @@ public class RegistrationEvent extends AppCompatActivity {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_IMAGE = "image";
+    int day, month, year, hour, minute;
+    int fday, fmonth, fyear, fhour, fminute;
 
     private static final String TAG = "EventRegistrationd";
 
@@ -54,7 +64,9 @@ public class RegistrationEvent extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-
+    private TimePicker timePicker1;
+    DatePickerDialog datePickerDialog;
+    Calendar calendar;
 
     private EditText nameField;
     private EditText descriptionField;
@@ -64,6 +76,7 @@ public class RegistrationEvent extends AppCompatActivity {
     private EditText phoneField;
     private EditText addressField;
     private Button buttonAddEvent;
+    private Button buttonPickDate;
     private Button buttonAddImage;
     private ImageView image;
 
@@ -93,12 +106,19 @@ public class RegistrationEvent extends AppCompatActivity {
         addressField = (EditText) findViewById(R.id.ERadress);
         buttonAddEvent = (Button) findViewById(R.id.ERaddEvent);
         buttonAddImage = (Button) findViewById(R.id.ERaddimage);
+        buttonPickDate = (Button) findViewById(R.id.ERpickDate);
         image = (ImageView) findViewById(R.id.ERimage);
 
         buttonAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
+            }
+        });
+        buttonPickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickDate();
             }
         });
     }
@@ -213,5 +233,51 @@ public class RegistrationEvent extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+   private void pickDate(){
+       calendar = Calendar.getInstance();
+       int day = calendar.get(Calendar.DAY_OF_MONTH);
+       int month = calendar.get(Calendar.MONTH);
+       int year = calendar.get(Calendar.YEAR);
+
+       datePickerDialog = new DatePickerDialog(RegistrationEvent.this, RegistrationEvent.this,  day, month, year);
+       datePickerDialog.show();
+   }
+    private void pickfDate(){
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        hour = timePicker1.getCurrentHour();
+        minute = timePicker1.getCurrentMinute();
+
+        timeField.setText((hour+1)+"-"+(minute+1));
+
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        fyear = year;
+        fmonth = month;
+        fday = day;
+
+        Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(RegistrationEvent.this, (TimePickerDialog.OnTimeSetListener) RegistrationEvent.this, hour, minute, DateFormat.is24HourFormat(this));
+        timePickerDialog.show();
+   }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {}
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        fhour = hour;
+        fmonth = minute;
+
+        dateField.setText(fday+"-"+(fmonth)+"-"+fyear);
+        timeField.setText(hour+":"+(minute));
+
     }
 }

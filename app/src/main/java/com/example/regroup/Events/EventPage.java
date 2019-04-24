@@ -52,7 +52,7 @@ public class EventPage extends AppCompatActivity {
     final static Event[] event = new Event[1];
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    //FirebaseFirestore db = FirebaseFirestore.getInstance()
 
 
     @Override
