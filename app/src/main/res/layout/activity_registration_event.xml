@@ -11,6 +11,10 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
+<<<<<<< HEAD
+=======
+        android:background="@drawable/background_1080x1920"
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
         android:fitsSystemWindows="true">
         <!--android:theme="@style/AppTheme.AppBarOverlay">-->
 
@@ -19,16 +23,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+<<<<<<< HEAD
             app:contentScrim="?attr/colorPrimary"
+=======
+            app:contentScrim="@drawable/background_1080x1920"
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
                 <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+=======
+                android:layout_height="match_parent"
+                android:background="@drawable/background_1080x1920"
+                app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

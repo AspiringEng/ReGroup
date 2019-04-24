@@ -11,14 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+<<<<<<< HEAD
         <activity android:name=".UserRegistration"></activity>
         <activity android:name=".LoginScreen">
             <intent-filter>
+=======
+        <activity android:name=".LoginScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".UserRegistration">
+            <intent-filter>
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
                 <action android:name="android.intent.action.ASSIST" />
 
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".Events.RegistrationEvent" ></activity>
             android:label="@string/title_activity_registration_event"
@@ -32,6 +46,17 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+=======
+
+        <activity android:name=".Events.RegistrationEvent"></activity> <!-- android:label="@string/title_activity_registration_event" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
+        <activity android:name=".Events.EventPage"></activity> <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
             </intent-filter>
         </activity>
         <activity android:name=".Profile">

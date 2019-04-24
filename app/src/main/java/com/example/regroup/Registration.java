@@ -35,7 +35,11 @@ public class Registration  extends AppCompatActivity implements View.OnClickList
 
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+<<<<<<< HEAD
         button = (Button) findViewById(R.id.button);
+=======
+        button = (Button) findViewById(R.id.deleteProf);
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
         textView = (TextView) findViewById(R.id.editText);
 
         button.setOnClickListener(this);

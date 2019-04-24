@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:layout_centerHorizontal="true"
+<<<<<<< HEAD
     android:layout_centerVertical="true">
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
@@ -23,3 +28,21 @@
 
 
 </RelativeLayout>
+=======
+    android:layout_centerVertical="true"
+    android:orientation="vertical">
+
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".EventsFragment"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
+    </com.lorentzos.flingswipe.SwipeFlingAdapterView>
+
+
+
+</LinearLayout>
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"

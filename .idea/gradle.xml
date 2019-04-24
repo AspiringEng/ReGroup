@@ -11,7 +11,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+<<<<<<< HEAD
             <option value="$PROJECT_DIR$/app"  />
+=======
+            <option value="$PROJECT_DIR$/app" />
+>>>>>>> parent of d54a3f8... Revert "Chat fragment"
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
