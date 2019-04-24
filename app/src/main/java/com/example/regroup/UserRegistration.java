@@ -1,11 +1,5 @@
 package com.example.regroup;
 
-<<<<<<< HEAD
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.google.firebase.auth.FirebaseAuth;
-=======
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
 public class UserRegistration extends AppCompatActivity {
 
@@ -31,13 +24,6 @@ public class UserRegistration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-        setContentView(R.layout.activity_user_registration);
-
-        getSupportActionBar().hide(); // Hides the top action bar
-        mAuth = FirebaseAuth.getInstance(); // initializing FirebaseAuth instance
-    }
-=======
         setContentView(R.layout.activity_user_registration2);
 
         mAuth = FirebaseAuth.getInstance(); // initializing FirebaseAuth instance
@@ -120,5 +106,4 @@ public class UserRegistration extends AppCompatActivity {
     }
 
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 }

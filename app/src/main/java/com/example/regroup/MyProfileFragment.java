@@ -1,21 +1,5 @@
 package com.example.regroup;
 
-<<<<<<< HEAD
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-public class MyProfileFragment extends Fragment {
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile, container, false);
-=======
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -32,6 +16,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.core.Tag;
 import com.google.firebase.firestore.DocumentReference;
@@ -56,10 +42,12 @@ public class MyProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
 
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
         txtv = view.findViewById(R.id.Name);
         bioButton = view.findViewById(R.id.bioButton);
 
-        uid = getArguments().getString("uid");
+        uid = currentFirebaseUser.getUid();
 
         getName(uid);
 
@@ -119,6 +107,5 @@ public class MyProfileFragment extends Fragment {
                 }
             }
         });
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     }
 }

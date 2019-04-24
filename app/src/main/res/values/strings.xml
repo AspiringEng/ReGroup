@@ -102,8 +102,5 @@
     <string name="title_activity_registration_event">RegistrationEvent</string>
     <string name="description">description</string>
     <string name="todo">TODO</string>
-<<<<<<< HEAD
-=======
     <string name="write_your_bio">Write your bio</string>
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 </resources>

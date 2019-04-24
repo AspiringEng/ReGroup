@@ -26,10 +26,7 @@
             android:ems="10"
             android:hint="name"
             android:inputType="text"
-<<<<<<< HEAD
-=======
             android:singleLine="true"
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
             android:textColorHint="@color/common_google_signin_btn_text_light_disabled"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +45,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
-=======
         <Button
             android:id="@+id/ERpickDate"
             android:layout_width="364dp"
@@ -60,7 +55,6 @@
             android:onClick="pickDate"
             android:text="pick date"
             tools:ignore="OnClick" />
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         <EditText
             android:id="@+id/ERdate"
             android:layout_width="364dp"
@@ -144,10 +138,7 @@
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-<<<<<<< HEAD
-=======
             android:background="@drawable/background_1080x1920"
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
             android:onClick="addImage"
             android:text="Add Image"
             tools:ignore="OnClick" />
@@ -165,10 +156,7 @@
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-<<<<<<< HEAD
-=======
             android:background="@drawable/background_1080x1920"
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
             android:layout_marginTop="56dp"
             android:onClick="createEvent"
             android:text="Create Event" />

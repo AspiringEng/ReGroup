@@ -1,9 +1,6 @@
 package com.example.regroup;
 
-<<<<<<< HEAD
-=======
 import android.graphics.Bitmap;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -25,10 +22,7 @@ public class Profile extends AppCompatActivity implements NameEnterDialog.NameEn
 
         txtv = findViewById(R.id.Name);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         txtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

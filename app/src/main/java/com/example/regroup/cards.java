@@ -1,13 +1,5 @@
 package com.example.regroup;
 
-<<<<<<< HEAD
-public class cards {
-    private String userId;
-    private String name;
-    public cards(String userId, String name){
-        this.userId = userId;
-        this.name = name;
-=======
 import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -146,7 +138,6 @@ public class cards {
         this.userId = userId;
         this.name = name;
         this.details = details;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     }
 
     public String getUserId()  {
@@ -164,9 +155,6 @@ public class cards {
     public void setName(String name) {
         this.name = name;
     }
-<<<<<<< HEAD
-}
-=======
 
     public String getDetails() {
         return details;
@@ -178,4 +166,3 @@ public class cards {
 
 }
 */
->>>>>>> parent of d54a3f8... Revert "Chat fragment"

@@ -7,12 +7,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_1080x1920_tinted">
 
-<<<<<<< HEAD
-    <ScrollView
-=======
 
     <android.support.v4.widget.NestedScrollView
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,13 +25,6 @@
 
             <ImageView
                 android:id="@+id/imageView"
-<<<<<<< HEAD
-                android:layout_width="match_parent"
-                android:layout_height="256dp"
-                tools:srcCompat="@tools:sample/backgrounds/scenic[2]"
-                android:background="@drawable/default_profile_outlined"
-                android:clickable="true"/>
-=======
                 android:layout_gravity="center_horizontal"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
@@ -43,7 +32,6 @@
                 android:clickable="true"
                  />
             <!--tools:srcCompat="@tools:sample/backgrounds/scenic[2]"-->
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
             <TextView
                 android:id="@+id/Name"
@@ -51,10 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-<<<<<<< HEAD
-                android:onClick="NameEnterDialog"
-=======
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
                 android:text="Vardas Pavarde"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />
@@ -67,11 +51,7 @@
                 android:layout_marginTop="30dp"/>
 
             <Button
-<<<<<<< HEAD
-                android:id="@+id/button"
-=======
                 android:id="@+id/bioButton"
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
                 style="@android:style/Animation.Translucent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,11 +93,7 @@
                 android:text="My Bio"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-<<<<<<< HEAD
-                android:textColor="#FFFFFF"/>
-=======
                 android:textColor="#FFFFFF" />
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
             <View
                 android:layout_width="match_parent"
@@ -209,10 +185,6 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="center"
                 android:background="#FFFFFF" />
-<<<<<<< HEAD
-        </LinearLayout>
-    </ScrollView>
-=======
             <Button
                 android:id="@+id/button11"
                 style="@android:style/Animation.Translucent"
@@ -263,5 +235,4 @@
                 android:background="#FFFFFF" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 </RelativeLayout>

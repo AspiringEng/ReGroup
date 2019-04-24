@@ -10,11 +10,7 @@
     ]]>
 
     <Button
-<<<<<<< HEAD
-        android:id="@+id/button"
-=======
         android:id="@+id/deleteProf"
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"

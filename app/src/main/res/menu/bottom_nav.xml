@@ -20,12 +20,9 @@
         android:id="@+id/nav_myProfile"
         android:icon="@drawable/ic_contacts_black_24dp"
         android:title="My Profile" />
-<<<<<<< HEAD
-=======
     <item
         android:id="@+id/nav_chat"
         android:icon="@drawable/ic_contacts_black_24dp"
         android:title="Chat"
         />
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 </menu>

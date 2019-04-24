@@ -27,21 +27,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-<<<<<<< HEAD
-=======
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
 import java.sql.Date;
 import java.sql.Time;
 
 public class EventPage extends AppCompatActivity {
 
-<<<<<<< HEAD
-=======
     private static final String KEY_ID = "id";
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     private static final String KEY_NAME = "name";
     private static final String KEY_DATE = "date";
     private static final String KEY_DESCRIPTION = "description";
@@ -58,11 +52,7 @@ public class EventPage extends AppCompatActivity {
     final static Event[] event = new Event[1];
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-<<<<<<< HEAD
-
-=======
     //FirebaseFirestore db = FirebaseFirestore.getInstance()
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
 
     @Override
@@ -84,10 +74,6 @@ public class EventPage extends AppCompatActivity {
 
 
 
-<<<<<<< HEAD
-
-        DocumentReference evenRef = db.collection("events").document("event1");
-=======
         Bundle b = getIntent().getExtras();
         String id = ""; // or other values
         if(b != null)
@@ -95,16 +81,11 @@ public class EventPage extends AppCompatActivity {
 
 
         DocumentReference evenRef = db.collection("events").document(id);
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         evenRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                  event[0] = new Event(
-<<<<<<< HEAD
-                        documentSnapshot.getId(),
-=======
                         documentSnapshot.getString(KEY_ID),
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
                         documentSnapshot.getString(KEY_NAME),
                         documentSnapshot.getString(KEY_DATE),
                         documentSnapshot.getString(KEY_ORG),
@@ -119,10 +100,7 @@ public class EventPage extends AppCompatActivity {
 
             }
         })
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -134,28 +112,19 @@ public class EventPage extends AppCompatActivity {
         //showEvent(event[0]);
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         TextView nameField = findViewById(R.id.EName);
         TextView descriptionField = findViewById(R.id.Edescription);
         TextView dateField = findViewById(R.id.Edate);
         TextView timeField = findViewById(R.id.Etime);
         TextView emailField = findViewById(R.id.Email);
         TextView phoneField = findViewById(R.id.Ephone);
-<<<<<<< HEAD
-        TextView adressField = findViewById(R.id.Eadress);
-=======
         TextView addressField = findViewById(R.id.Eadress);
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         TextView city = findViewById(R.id.Ecity);
         ImageView image = findViewById(R.id.EImage);
         nameField.setText(event[0].getName());
     }
 
-<<<<<<< HEAD
-=======
     public void ShowEvent(String id){
 
 
@@ -163,6 +132,5 @@ public class EventPage extends AppCompatActivity {
 
 
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
 }

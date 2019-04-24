@@ -7,11 +7,7 @@ buildscript {
         
     }
     dependencies {
-<<<<<<< HEAD
-        classpath 'com.android.tools.build:gradle:3.3.2'
-=======
         classpath 'com.android.tools.build:gradle:3.4.0'
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         classpath 'com.google.gms:google-services:4.2.0'
         //classpath 'com.google.gms:google-services:4.0.1'
 

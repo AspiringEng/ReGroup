@@ -1,13 +1,9 @@
 package com.example.regroup.Events;
 
 import android.annotation.SuppressLint;
-<<<<<<< HEAD
-import android.app.ProgressDialog;
-=======
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -18,13 +14,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-<<<<<<< HEAD
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-=======
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +22,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 import android.widget.Toast;
 
 import com.example.regroup.R;
@@ -48,24 +36,16 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-=======
 import java.util.Calendar;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-<<<<<<< HEAD
-public class RegistrationEvent extends AppCompatActivity {
-
-=======
 import static android.app.DatePickerDialog.*;
 
 public class RegistrationEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private static final String KEY_ID = "id";
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     private static final String KEY_NAME = "name";
     private static final String KEY_DATE = "date";
     private static final String KEY_DESCRIPTION = "description";
@@ -73,15 +53,10 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_IMAGE = "image";
-<<<<<<< HEAD
-
-    private static final String TAG = "EventRegistrationdd";
-=======
     int day, month, year, hour, minute;
     int fday, fmonth, fyear, fhour, fminute;
 
     private static final String TAG = "EventRegistrationd";
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
@@ -89,13 +64,9 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-<<<<<<< HEAD
-
-=======
     private TimePicker timePicker1;
     DatePickerDialog datePickerDialog;
     Calendar calendar;
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 
     private EditText nameField;
     private EditText descriptionField;
@@ -105,17 +76,10 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
     private EditText phoneField;
     private EditText addressField;
     private Button buttonAddEvent;
-<<<<<<< HEAD
-    private Button buttonAddImage;
-    private ImageView image;
-
-
-=======
     private Button buttonPickDate;
     private Button buttonAddImage;
     private ImageView image;
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,10 +106,7 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         addressField = (EditText) findViewById(R.id.ERadress);
         buttonAddEvent = (Button) findViewById(R.id.ERaddEvent);
         buttonAddImage = (Button) findViewById(R.id.ERaddimage);
-<<<<<<< HEAD
-=======
         buttonPickDate = (Button) findViewById(R.id.ERpickDate);
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         image = (ImageView) findViewById(R.id.ERimage);
 
         buttonAddImage.setOnClickListener(new View.OnClickListener() {
@@ -154,15 +115,12 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
                 chooseImage();
             }
         });
-<<<<<<< HEAD
-=======
         buttonPickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickDate();
             }
         });
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -178,10 +136,7 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         String email = emailField.getText().toString();
         String imageRef = UUID.randomUUID().toString();
         Map<String, Object> event = new HashMap<>();
-<<<<<<< HEAD
-=======
         event.put(KEY_ID, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         event.put(KEY_NAME, name);
         event.put(KEY_DESCRIPTION, description);
         event.put(KEY_DATE, date);
@@ -190,13 +145,6 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         event.put(KEY_EMAIL, email);
         event.put(KEY_IMAGE, imageRef);
 
-<<<<<<< HEAD
-
-        db.collection("events").document("event1").set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(RegistrationEvent.this, "event saved", Toast.LENGTH_SHORT).show();
-=======
         final String id  = name+date;
 
         db.collection("events").document(id).set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -214,7 +162,6 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
                 intent.putExtras(b); //Put your id to your next Intent
                 startActivity(intent);
                 finish();
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -228,26 +175,16 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
 
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-<<<<<<< HEAD
-=======
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-<<<<<<< HEAD
-        super.onActivityResult(requestCode, resultCode, data);
-=======
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
         {
@@ -260,12 +197,8 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
             {
                 e.printStackTrace();
             }
-<<<<<<< HEAD
-        }
-=======
          }
 
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
     }
     private void uploadImage(String imageRef) {
 
@@ -302,8 +235,6 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         }
     }
 
-<<<<<<< HEAD
-=======
    private void pickDate(){
        calendar = Calendar.getInstance();
        int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -349,5 +280,4 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         timeField.setText(hour+":"+(minute));
 
     }
->>>>>>> parent of d54a3f8... Revert "Chat fragment"
 }
