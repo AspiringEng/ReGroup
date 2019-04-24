@@ -9,15 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
+
+    private FirebaseAuth firebaseAuth;
+    private Button logout;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        Button login = view.findViewById(R.id.loginb);
+        Button login = view.findViewById(R.id.loginba);
         login.setOnClickListener(this);
         return view;
     }
@@ -25,13 +30,15 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.loginb :
+            case R.id.loginba:
                 openLogin();
                 break;
         }
     }
 
     public void openLogin(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
         Intent intent = new Intent(getActivity(), LoginScreen.class);
         startActivity(intent);
     }
