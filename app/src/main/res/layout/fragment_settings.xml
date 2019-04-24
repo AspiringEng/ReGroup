@@ -7,14 +7,13 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/deleteProf"
+        android:id="@+id/regReng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="#00BCD4"
         android:onClick="startEventRegistration"
-        android:text="Delete Profile"
+        android:text="Registruoti renginį"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,18 +25,29 @@
         android:id="@+id/loginba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="161dp"
         android:layout_marginBottom="168dp"
         android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_conversion_wrapHeight="126"
         tools:layout_conversion_wrapWidth="231" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="423dp"
+        android:layout_marginBottom="260dp"
+        android:backgroundTint="#E91E63"
+        android:text="Ištrinti profilį"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
