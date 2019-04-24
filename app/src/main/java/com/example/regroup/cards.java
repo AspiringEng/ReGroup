@@ -3,9 +3,11 @@ package com.example.regroup;
 public class cards {
     private String userId;
     private String name;
-    public cards(String userId, String name){
+    private String details;
+    public cards(String userId, String name, String details){
         this.userId = userId;
         this.name = name;
+        this.details = details;
     }
 
     public String getUserId()  {
@@ -23,4 +25,13 @@ public class cards {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
 }
