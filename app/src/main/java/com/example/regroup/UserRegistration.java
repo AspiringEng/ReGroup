@@ -39,7 +39,7 @@ public class UserRegistration extends AppCompatActivity {
                 String password1 = ((EditText)findViewById(R.id.passwordText1)).getText().toString();
                 String password2 = ((EditText)findViewById(R.id.passwordText2)).getText().toString();
 
-                // Check if checkBox is checked.
+                // Check if checkBox is checked..
                 // Check if two passwords are equal.
                 // check if password is long enough. [min 7 characters]
                 // Check if the entered email exists or not
