@@ -45,13 +45,9 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
         rowItems = new ArrayList<cards>();
-        StringBuilder sb = new StringBuilder();
-        for (int j = 0; j <100; j++) {
-            sb.append("Random big text to test the scrollview thingy.");
-        }
 
-        rowItems.add(new cards("0", "Granatos Live", sb.toString()));
-        rowItems.add(new cards("0", "Granatos Live", sb.toString()));
+        rowItems.add(new cards("0", "Granatos Live"));
+        rowItems.add(new cards("0", "Granatos Live"));
 
 
 //        al = new ArrayList<>();
@@ -96,7 +92,7 @@ public class EventsFragment extends Fragment {
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
                 //al.add("XML ".concat(String.valueOf(i)));
-                cards itme = new cards("0","Granatos Live", "The test is over, pal. Go home. Don't wanna? Fine, check me out some more then.");
+                cards itme = new cards("0","Granatos Live");
                 rowItems.add(itme);
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
@@ -105,10 +101,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onScroll(float scrollProgressPercent) {
-                Toast.makeText(getActivity(), "Scrollerino", Toast.LENGTH_SHORT).show();
-                if(scrollProgressPercent > 0){
-                    //do stuff when scrolling up
-                }
+
             }
         });
 
