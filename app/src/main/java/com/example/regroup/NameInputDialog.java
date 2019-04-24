@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -45,8 +46,9 @@ public class NameInputDialog extends DialogFragment {
         accept = view.findViewById(R.id.accept);
         dismiss = view.findViewById(R.id.dismiss);
 
-        System.out.println("uid of user on NameInputDialog: " + getArguments().getString("uid"));
         uid = getArguments().getString("uid");
+
+        setText(uid);
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,4 +79,38 @@ public class NameInputDialog extends DialogFragment {
         docRef.update("Gimimo data", gimimoData);
     }
 
+    public void setText(String uid){
+        DocumentReference docRef = db.collection("users").document(uid);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    Date gimimoData = documentSnapshot.getDate("Gimimo data");
+                    String vardas = documentSnapshot.getString("Vardas");
+                    String pavarde = documentSnapshot.getString("Pavarde");
+                    nameET.setText(vardas);
+                    lastNameET.setText(pavarde);
+                    birthDate.updateDate(gimimoData.getYear() + 1900, gimimoData.getMonth() + 1, gimimoData.getDay());
+                }
+            }
+        });
+    }
+
+    private String getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
+    }
 }
