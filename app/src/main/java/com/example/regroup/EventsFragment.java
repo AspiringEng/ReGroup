@@ -11,11 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.regroup.Events.Event;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -25,7 +20,6 @@ public class EventsFragment extends Fragment {
 
     private cards cards_data[]; // might be unescessary
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private MyArrayAdapter MyArrayAdapter;
 

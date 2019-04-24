@@ -23,11 +23,9 @@ public class MyArrayAdapter extends ArrayAdapter<cards> {
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.eventName);
-        TextView details = convertView.findViewById(R.id.eventDetails);
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
 
         name.setText(card_item.getName());
-        details.setText((card_item.getDetails()));
         image.setImageResource(R.drawable.logo_outlined);
 
         return convertView;
