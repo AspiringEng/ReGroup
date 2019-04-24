@@ -150,7 +150,6 @@ public class ProfilePictureDialog extends DialogFragment {
             {
                 Toast.makeText(getActivity(), "camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(android.provider.MediaStore.);
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
             else
