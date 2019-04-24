@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.core.Tag;
 import com.google.firebase.firestore.DocumentReference;
@@ -40,10 +42,12 @@ public class MyProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
 
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
         txtv = view.findViewById(R.id.Name);
         bioButton = view.findViewById(R.id.bioButton);
 
-        uid = getArguments().getString("uid");
+        uid = currentFirebaseUser.getUid();
 
         getName(uid);
 
