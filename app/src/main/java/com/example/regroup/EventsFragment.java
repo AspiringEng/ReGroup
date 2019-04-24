@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.regroup.Events.Event;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -20,6 +25,7 @@ public class EventsFragment extends Fragment {
 
     private cards cards_data[]; // might be unescessary
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private MyArrayAdapter MyArrayAdapter;
 
@@ -39,9 +45,13 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
         rowItems = new ArrayList<cards>();
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j <100; j++) {
+            sb.append("Random big text to test the scrollview thingy.");
+        }
 
-        rowItems.add(new cards("0", "Granatos Live"));
-        rowItems.add(new cards("0", "Granatos Live"));
+        rowItems.add(new cards("0", "Granatos Live", sb.toString()));
+        rowItems.add(new cards("0", "Granatos Live", sb.toString()));
 
 
 //        al = new ArrayList<>();
@@ -86,7 +96,7 @@ public class EventsFragment extends Fragment {
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
                 //al.add("XML ".concat(String.valueOf(i)));
-                cards itme = new cards("0","Granatos Live");
+                cards itme = new cards("0","Granatos Live", "The test is over, pal. Go home. Don't wanna? Fine, check me out some more then.");
                 rowItems.add(itme);
                 arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
@@ -95,7 +105,10 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onScroll(float scrollProgressPercent) {
-
+                Toast.makeText(getActivity(), "Scrollerino", Toast.LENGTH_SHORT).show();
+                if(scrollProgressPercent > 0){
+                    //do stuff when scrolling up
+                }
             }
         });
 
