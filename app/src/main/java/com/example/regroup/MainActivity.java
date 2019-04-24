@@ -15,7 +15,10 @@ import com.example.regroup.Events.Event;
 import com.example.regroup.Events.EventPage;
 import com.example.regroup.Events.RegistrationEvent;
 import com.google.firebase.auth.FirebaseAuth;
+<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseUser;
+=======
+>>>>>>> parent of 389b82a... asd
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,7 +28,10 @@ import java.text.SimpleDateFormat;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";  //gal...
+<<<<<<< HEAD
     private String uid;
+=======
+>>>>>>> parent of 389b82a... asd
 
     private FirebaseAuth mAuth;
 
@@ -44,11 +50,15 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new EventsFragment();
                             break;
                         case R.id.nav_myProfile:
+<<<<<<< HEAD
                             Bundle bundle = new Bundle();
                             bundle.putString("uid", uid);
                             MyProfileFragment myProfileFragment = new MyProfileFragment();
                             myProfileFragment.setArguments(bundle);
                             selectedFragment = myProfileFragment;
+=======
+                            selectedFragment = new MyProfileFragment();
+>>>>>>> parent of 389b82a... asd
                             break;
                         case R.id.nav_settings:
                             selectedFragment = new SettingsFragment();
@@ -72,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setSelectedItemId(R.id.nav_events);
         Log.d("main", "The onCreate() event");
         createEvent();
+<<<<<<< HEAD
 
         /*Siek tiek pakeiciau, nes gan daznai uzluzdavo programa, kai nueidavau i
           My Profile skilti - Arturas */
@@ -81,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         //uid = getIntent().getStringExtra("uid");
 
         System.out.println("uid of user on mainActivity: " + uid);
+=======
+>>>>>>> parent of 389b82a... asd
     }
 
 
