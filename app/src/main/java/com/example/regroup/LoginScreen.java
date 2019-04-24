@@ -23,19 +23,27 @@ import com.facebook.login.widget.LoginButton;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginScreen extends AppCompatActivity {
 
     private CallbackManager mCallBackManager;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
     private static final String TAG = MainActivity.class.getSimpleName();
     String uid;
@@ -71,6 +79,7 @@ public class LoginScreen extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 Toast.makeText(getApplicationContext(), "FB login successful", Toast.LENGTH_SHORT).show();
+
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -112,6 +121,22 @@ public class LoginScreen extends AppCompatActivity {
                             }
                             //Paema userio uid
                             uid = mAuth.getUid();
+
+                            // Checks if user is in DB. If not, makes a new document about him.
+                            db.collection("users").document(uid).get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.getResult().exists()){
+                                                Toast.makeText(getApplicationContext(), "User is in DB", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(), "User is not in DB", Toast.LENGTH_SHORT).show();
+                                                createUserInDB(uid);
+                                            }
+                                        }
+                                    });
+
                             //Perduoda mainActivity uid, tam kad butu galima kitiems fragmentams
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             intent.putExtra("uid", uid);
@@ -133,6 +158,32 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
+    // Makes a new document is "user" collection which is named by uid.
+    private void createUserInDB(String uid) {
+        Map<String, Object> user = new HashMap<>();
+        user.put("Vardas", "");
+        user.put("Pavarde", "");
+        user.put("Miestas", "");
+        user.put("Amzius", "");
+        user.put("Kontaktai", "");
+
+        db.collection("users").document(uid)
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+    }
+
+    // Needed for facebook login to work.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -141,6 +192,7 @@ public class LoginScreen extends AppCompatActivity {
         mCallBackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    // Handles facebook access token and logs the user in.
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
 
@@ -153,8 +205,27 @@ public class LoginScreen extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
-                            startActivity(new Intent(LoginScreen.this, MainActivity.class));
+
+                            uid = mAuth.getUid();
+
+                            // Checks if user is in DB. If not, makes a new document about him.
+                            db.collection("users").document(uid).get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.getResult().exists()){
+                                                Toast.makeText(getApplicationContext(), "User is in DB", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(), "User is not in DB", Toast.LENGTH_SHORT).show();
+                                                createUserInDB(uid);
+                                            }
+                                        }
+                                    });
+
+                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            intent.putExtra("uid", uid);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
