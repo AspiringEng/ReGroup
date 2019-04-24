@@ -10,8 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Date;
 
 public class BioDialog extends DialogFragment {
 
@@ -32,6 +36,7 @@ public class BioDialog extends DialogFragment {
         dismiss = view.findViewById(R.id.dismissBio);
         bioET = view.findViewById(R.id.bioEditText);
 
+        setText(uid);
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,5 +59,18 @@ public class BioDialog extends DialogFragment {
 
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Bio", bio);
+    }
+
+    public void setText(String uid){
+        DocumentReference docRef = db.collection("users").document(uid);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    String bio = documentSnapshot.getString("Bio");
+                    bioET.setText(bio);
+                }
+            }
+        });
     }
 }
