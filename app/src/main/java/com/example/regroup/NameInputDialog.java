@@ -72,7 +72,6 @@ public class NameInputDialog extends DialogFragment {
     }
 
     public void setName(String uid, String vardas, String pavarde, Timestamp gimimoData) {
-        System.out.println("setName uid: " + uid + " vardas: " + vardas + " pavarde: " + pavarde + " gimimodata" + gimimoData);
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Vardas", vardas);
         docRef.update("Pavarde", pavarde);
@@ -90,7 +89,7 @@ public class NameInputDialog extends DialogFragment {
                     String pavarde = documentSnapshot.getString("Pavarde");
                     nameET.setText(vardas);
                     lastNameET.setText(pavarde);
-                    birthDate.updateDate(gimimoData.getYear() + 1900, gimimoData.getMonth() + 1, gimimoData.getDay());
+                    birthDate.updateDate(gimimoData.getYear() + 1900, gimimoData.getMonth(), gimimoData.getDate());
                 }
             }
         });
