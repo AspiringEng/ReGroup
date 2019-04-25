@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
@@ -23,11 +25,12 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
         Button login = view.findViewById(R.id.loginba);
-        Button del = view.findViewById(R.id.delete);
         login.setOnClickListener(this);
+
+        Button del = view.findViewById(R.id.delete);
+        del.setOnClickListener(this);
         return view;
     }
-
 
     @Override
     public void onClick(View v) {
@@ -35,9 +38,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             case R.id.loginba:
                 openLogin();
                 break;
-            case R.id.delete:
-                openDelete();
+            case  R.id.delete:
+                delete();
                 break;
+
         }
     }
 
@@ -48,11 +52,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         startActivity(intent);
     }
 
-    public void openDelete(){
+    public void delete(){
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.getCurrentUser().delete();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseUser.delete();
         Intent intent = new Intent(getActivity(), LoginScreen.class);
         startActivity(intent);
+
     }
 
 }

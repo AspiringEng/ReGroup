@@ -103,4 +103,7 @@
     <string name="description">description</string>
     <string name="todo">TODO</string>
     <string name="write_your_bio">Write your bio</string>
+    <string name="facebook_app_id">830101144012951</string>
+    <string name="fb_login_protocol_scheme">fb830101144012951</string>
+    <string name="city_text_view">Write the city you are in</string>
 </resources>
