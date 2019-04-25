@@ -15,9 +15,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.FacebookSdk;
@@ -35,6 +39,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -42,11 +50,13 @@ import java.util.Map;
 
 public class LoginScreen extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private CallbackManager mCallBackManager;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
-    private static final String TAG = MainActivity.class.getSimpleName();
+
     String uid;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +90,7 @@ public class LoginScreen extends AppCompatActivity {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 Toast.makeText(getApplicationContext(), "FB login successful", Toast.LENGTH_SHORT).show();
 
+                getFacebookProfileData(loginResult.getAccessToken());
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -158,11 +169,31 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
+    // Gets all the info from Facebook profile. [Only gets the first name and last name at the moment]
+    private void getFacebookProfileData(AccessToken accessToken) {
+        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    //Toast.makeText(getApplicationContext(), object.getString("name"), Toast.LENGTH_SHORT).show();
+                    name = object.getString("name");
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        request.executeAsync();
+    }
+
     // Makes a new document is "user" collection which is named by uid.
     private void createUserInDB(String uid) {
+        String[] firstAndLast = name.split(" ");
+
         Map<String, Object> user = new HashMap<>();
-        user.put("Vardas", "");
-        user.put("Pavarde", "");
+        user.put("Vardas", firstAndLast[0]);
+        user.put("Pavarde", firstAndLast[1]);
         user.put("Miestas", "");
         user.put("Amzius", "");
         user.put("Kontaktai", "");
