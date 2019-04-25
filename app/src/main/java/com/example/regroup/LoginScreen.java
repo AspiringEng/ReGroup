@@ -206,8 +206,9 @@ public class LoginScreen extends AppCompatActivity {
         user.put("Vardas", firstAndLast[0]);
         user.put("Pavarde", firstAndLast[1]);
         user.put("Miestas", "");
-        user.put("Amzius", "");
-        user.put("Kontaktai", "");
+        user.put("Gimimo data", "");
+        user.put("Bio", "");
+        user.put("Megstamiausios veiklos", "");
 
         db.collection("users").document(uid)
                 .set(user)
