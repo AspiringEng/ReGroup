@@ -146,7 +146,7 @@ public class LoginScreen extends AppCompatActivity {
                                             }
                                             else {
                                                 Toast.makeText(getApplicationContext(), "User is not in DB", Toast.LENGTH_SHORT).show();
-                                                //createUserInDB(uid); // Netinka nes yra tikrinamas pries prisiloginant ( Yra bugas neduoda prisijungti )
+                                                //createUserInDB(uid);
                                             }
                                         }
                                     });
