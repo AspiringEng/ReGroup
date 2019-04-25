@@ -12,6 +12,9 @@ public class user {
     public String getUserId(){
         return userId;
     }
+    public String getId() {
+        return userId;
+    } // Neliesti
     public void setUserID(String userID){
         this.userId = userId;
     }
