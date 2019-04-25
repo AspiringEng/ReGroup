@@ -45,7 +45,11 @@ import java.util.Date;
 public class MyProfileFragment extends Fragment {
 
     TextView txtv;
+
     Button bioButton;
+    Button locationButton;
+    Button favActivitiesButton;
+
     ImageView profileIMG;
     String uid;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -64,7 +68,9 @@ public class MyProfileFragment extends Fragment {
 
         txtv = view.findViewById(R.id.Name);
         bioButton = view.findViewById(R.id.bioButton);
+        locationButton = view.findViewById(R.id.locationButton);
         profileIMG = view.findViewById(R.id.profileIMG);
+        favActivitiesButton = view.findViewById(R.id.favoriteActivitiesButton);
 
         uid = currentFirebaseUser.getUid();
 
@@ -98,6 +104,22 @@ public class MyProfileFragment extends Fragment {
             public void onClick(View v) {
                 DialogFragment profilePictureDialog = new ProfilePictureDialog();
                 profilePictureDialog.show(getFragmentManager(), "profilePictureDialog");
+            }
+        });
+
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment profileLocationInput = new ProfileLocationInput();
+                profileLocationInput.show(getFragmentManager(), "profileLocationInput");
+            }
+        });
+
+        favActivitiesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment favoriteActivityInput = new FavoriteActivityInput();
+                favoriteActivityInput.show(getFragmentManager(), "favoriteActivityInput");
             }
         });
 

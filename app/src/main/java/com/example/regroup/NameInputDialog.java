@@ -53,7 +53,6 @@ public class NameInputDialog extends DialogFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "accept paspaude", Toast.LENGTH_SHORT).show();
                 Calendar calendar = new GregorianCalendar(birthDate.getYear(), birthDate.getMonth(), birthDate.getDayOfMonth());
                 Timestamp timestamp = new Timestamp(calendar.getTime());
                 setName(uid, nameET.getText().toString(), lastNameET.getText().toString(), timestamp);
@@ -63,7 +62,6 @@ public class NameInputDialog extends DialogFragment {
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "dismiss paspaude", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });

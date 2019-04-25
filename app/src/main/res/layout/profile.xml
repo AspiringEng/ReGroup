@@ -67,12 +67,12 @@
                 android:background="#FFFFFF" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/locationButton"
                 style="@android:style/Animation.Translucent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
+                android:text="My Location"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"/>
@@ -84,145 +84,12 @@
                 android:background="#FFFF" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/favoriteActivitiesButton"
                 style="@android:style/Animation.Translucent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-
-            <Button
-                android:id="@+id/button6"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-
-            <Button
-                android:id="@+id/button7"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-
-            <Button
-                android:id="@+id/button8"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-
-            <Button
-                android:id="@+id/button9"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-
-            <Button
-                android:id="@+id/button10"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-            <Button
-                android:id="@+id/button11"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-            <Button
-                android:id="@+id/button12"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF" />
-            <Button
-                android:id="@+id/button13"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Bio"
+                android:text="My Favorite Activities"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
