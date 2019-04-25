@@ -11,20 +11,28 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.regroup.Chat.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.RegEx;
+
 public class UserRegistration extends AppCompatActivity {
 
+
+    DatabaseReference reference; // Real time DB needed for chat
     private FirebaseAuth mAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -96,8 +104,8 @@ public class UserRegistration extends AppCompatActivity {
         });
     }
 
-    public void registerUser(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    public void registerUser(final String Email, String password) {
+        mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())
@@ -105,8 +113,49 @@ public class UserRegistration extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "User has been registered!", Toast.LENGTH_SHORT).show();
                     String uid = mAuth.getUid();
 
+
+
+                    //Reikia chat'ui
+                    FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                    assert firebaseUser != null;
+                    String userid = firebaseUser.getUid();
+
+                    reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+
+                    String temp = Email;
+                    String regex_pattern = "@.+";
+                    String username =  temp.replaceAll(regex_pattern,"");
+
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("id", userid);
+                    hashMap.put("username", username);
+                    hashMap.put("imageURL", "default");
+                    hashMap.put("status", "offline");
+                    hashMap.put("search", username.toLowerCase());
+
+
+                    //Arturo metodas
+
                     createUserInDB(uid);
-                    startActivity(new Intent(UserRegistration.this, MainActivity.class));
+
+                    //End of Arturo metodas
+
+                    reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Intent intent = new Intent(UserRegistration.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    });
+                    //End of chat stuff
+
+
+
+                    // startActivity(new Intent(UserRegistration.this, MainActivity.class)); // Pakeistas i auksciau esanti koda (Veikimas nepasikeite)
                 }
                 else
                 {

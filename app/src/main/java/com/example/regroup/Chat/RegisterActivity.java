@@ -65,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void register(final String username, String email, String password){
 
         auth.createUserWithEmailAndPassword(email, password)
