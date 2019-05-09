@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Profile_package;
 
 import android.Manifest;
 import android.app.Activity;
@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

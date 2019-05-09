@@ -61,13 +61,6 @@
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile">
-            <intent-filter>
-                <action android:name="android.intent.action.CHOOSER" />
-
-                <category android:name="android.intent.category.TAB" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Registration"
             android:parentActivityName=".MainActivity" />

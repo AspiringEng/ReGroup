@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Profile_package;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;

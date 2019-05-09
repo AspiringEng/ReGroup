@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Profile_package;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,72 +10,64 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Timestamp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Date;
-
-public class ProfileLocationInput extends DialogFragment {
+public class BioDialog extends DialogFragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     String uid;
-
-    Button buttonAccept;
-    Button buttonDismiss;
-
-    EditText cityET;
+    Button accept;
+    Button dismiss;
+    private EditText bioET;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.profile_location_input_dialog, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.bio_dialog, container, false);
 
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        uid = currentFirebaseUser.getUid();
+        uid = getArguments().getString("uid");
 
-        buttonAccept = view.findViewById(R.id.accept);
-        buttonDismiss = view.findViewById(R.id.dismiss);
+        accept = view.findViewById(R.id.acceptBio);
+        dismiss = view.findViewById(R.id.dismissBio);
+        bioET = view.findViewById(R.id.bioEditText);
 
-        cityET = view.findViewById(R.id.profileCityET);
+        setText(uid);
 
-        getLocation(uid);
-
-        buttonAccept.setOnClickListener(new View.OnClickListener() {
+        accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocation(uid, cityET.getText().toString());
+                setBio(bioET.getText().toString());
                 dismiss();
             }
         });
-
-        buttonDismiss.setOnClickListener(new View.OnClickListener() {
+        dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
+
         return view;
     }
 
-    public void setLocation(String uid, String city) {
+    public void setBio(String bio) {
+
         DocumentReference docRef = db.collection("users").document(uid);
-        docRef.update("Miestas", city);
+        docRef.update("Bio", bio);
     }
 
-    public void getLocation(String uid){
+    public void setText(String uid){
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    String city = documentSnapshot.getString("Miestas");
-                    cityET.setText(city);
+                    String bio = documentSnapshot.getString("Bio");
+                    bioET.setText(bio);
                 }
             }
         });

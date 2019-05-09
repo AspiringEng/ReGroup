@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Profile_package;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
