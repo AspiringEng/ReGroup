@@ -9,15 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.regroup.Events.Event;
-import com.example.regroup.Events.EventPage;
 import com.example.regroup.Events.RegistrationEvent;
+import com.example.regroup.Profile_package.MyProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.regroup.Chat.Fragments.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new SettingsFragment();
                             break;
                         case R.id.nav_chat:
-                            selectedFragment = new ChatFragment();
+                            selectedFragment = new UsersFragment();
                             break;
                     }
                     //Tam, kad rodytu fragmentus:

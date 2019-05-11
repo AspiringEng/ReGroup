@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="Choose your favorite activities"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+    <CheckBox
+        android:id="@+id/exerciseCB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Exercise"/>
+    <CheckBox
+        android:id="@+id/boardGamesCB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Board games"/>
+    <CheckBox
+        android:id="@+id/videoGamesCB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Video games"/>
+    <CheckBox
+        android:id="@+id/musicConcertsCB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Music concert"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="accept"
+            android:layout_weight="1"
+            android:background="#FFF"
+            />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000"/>
+        <Button
+            android:id="@+id/dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dismiss"
+            android:layout_weight="1"
+            android:background="#FFF"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

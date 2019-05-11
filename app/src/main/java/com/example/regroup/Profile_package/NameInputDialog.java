@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Profile_package;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.regroup.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
@@ -53,7 +54,6 @@ public class NameInputDialog extends DialogFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "accept paspaude", Toast.LENGTH_SHORT).show();
                 Calendar calendar = new GregorianCalendar(birthDate.getYear(), birthDate.getMonth(), birthDate.getDayOfMonth());
                 Timestamp timestamp = new Timestamp(calendar.getTime());
                 setName(uid, nameET.getText().toString(), lastNameET.getText().toString(), timestamp);
@@ -63,7 +63,6 @@ public class NameInputDialog extends DialogFragment {
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "dismiss paspaude", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });
@@ -72,7 +71,6 @@ public class NameInputDialog extends DialogFragment {
     }
 
     public void setName(String uid, String vardas, String pavarde, Timestamp gimimoData) {
-        System.out.println("setName uid: " + uid + " vardas: " + vardas + " pavarde: " + pavarde + " gimimodata" + gimimoData);
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Vardas", vardas);
         docRef.update("Pavarde", pavarde);
@@ -90,7 +88,7 @@ public class NameInputDialog extends DialogFragment {
                     String pavarde = documentSnapshot.getString("Pavarde");
                     nameET.setText(vardas);
                     lastNameET.setText(pavarde);
-                    birthDate.updateDate(gimimoData.getYear() + 1900, gimimoData.getMonth() + 1, gimimoData.getDay());
+                    birthDate.updateDate(gimimoData.getYear() + 1900, gimimoData.getMonth(), gimimoData.getDate());
                 }
             }
         });
