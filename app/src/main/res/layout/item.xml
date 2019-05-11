@@ -28,7 +28,7 @@
             android:layout_gravity="center">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/eventImage"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:scaleType="centerCrop" />

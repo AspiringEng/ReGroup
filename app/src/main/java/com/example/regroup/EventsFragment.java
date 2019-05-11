@@ -1,6 +1,7 @@
 package com.example.regroup;
 
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,54 +12,75 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventsFragment extends Fragment {
 
     private cards cards_data[]; // might be unescessary
-
+    private final String KEY_EVENTS = "events";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference eventsRef = db.collection("events");
 
     private MyArrayAdapter MyArrayAdapter;
 
-    ListView listView;
-
     List<cards> rowItems;
 
-    //private ArrayList<String> al;
-
     private MyArrayAdapter arrayAdapter;
-
-    private int i;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-
-        rowItems = new ArrayList<cards>();
-
-        rowItems.add(new cards("0", "Granatos Live"));
-        rowItems.add(new cards("0", "Granatos Live"));
-
-
-//        al = new ArrayList<>();
-//        al.add("php");
-//        al.add("c");
-//        al.add("python");
-//        al.add("java");
-//        al.add("html");
-//        al.add("c++");
-//        al.add("css");
-//        al.add("javascript");
+        Log.i("CREATION", "created");
+        rowItems = new ArrayList<>();
 
         arrayAdapter = new MyArrayAdapter(getActivity(), R.layout.item, rowItems);
 
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) view.findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
+
+        eventsRef.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        Log.i("DATABASE ACCESSED", "SUCCESSFULLY: ");
+                        if(!queryDocumentSnapshots.isEmpty()){
+                            for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                                rowItems.add(snapshot.toObject(cards.class));
+                            }
+                            for(cards event : rowItems){
+                                Log.i("AN EVENT", event.toString());
+                            }
+                            Log.i("EVENT INFO", rowItems.get(0).toString());
+                        } else {
+                            Toast.makeText(getActivity(), "No events to show", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Couldn't load the collection", Toast.LENGTH_LONG).show();
+                    }
+                });
+
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
@@ -84,13 +106,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                // Ask for more data here
-                //al.add("XML ".concat(String.valueOf(i)));
-                cards itme = new cards("0","Granatos Live");
-                rowItems.add(itme);
-                arrayAdapter.notifyDataSetChanged();
-                Log.d("LIST", "notified");
-                i++;
+
             }
 
             @Override

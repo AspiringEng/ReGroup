@@ -171,6 +171,7 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
             }
         });
 
+        Log.i("IMAGE REF WHEN SETTING:", imageRef);
         uploadImage(imageRef);
 
     }

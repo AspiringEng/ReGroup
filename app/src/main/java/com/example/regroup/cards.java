@@ -7,21 +7,19 @@ import java.text.SimpleDateFormat;
 public class cards {
     private String eventId;
     private String name;
-    private Date date;
+    private String date;
     private String organizer;
-    private Time time;
+    private String time;
     private String address;
     private String city;
     private String description;
     private String phone;
     private String email;
-
-
-    private String imageRef;
+    private String image;
 
     public cards(){}
 
-    public cards(String eventId, String name, Date date, String organizator){
+    public cards(String eventId, String name, String date, String organizator){
         this.eventId = eventId;
         this.name = name;
         this.date = date;
@@ -35,28 +33,28 @@ public class cards {
     SimpleDateFormat dateForamt = new SimpleDateFormat("dd/MM/yyyy");
     final String timeFromat = " hh:mm";
 
-    public cards(String eventId, String name, String date, String organizer, String time, String address, String city, String description, String phone, String email, String imageRef) {
+    public cards(String eventId, String name, String date, String organizer, String time, String address, String city, String description, String phone, String email, String image) {
         this.eventId = eventId;
         this.name = name;
-        //this.date = Date.valueOf(dateForamt.format(date));
+        this.date = date;
         this.organizer = organizer;
-        // this.time = Time.valueOf(String.format(time));
+        this.time = time;
         this.address = address;
         this.city = city;
         this.description = description;
         this.phone = phone;
         this.email = email;
-        this.imageRef = imageRef;
+        this.image = image;
     }
 
 
     public void setOrganizer(String organizer) {
         this.organizer = organizer;
     }
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
     public String getAddress() {
@@ -101,29 +99,29 @@ public class cards {
     public void setName(String name){
         this.name = name;
     }
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
-    public void setDate(Date date){
+    public void setDate(String date){
         this.date = date;
     }
     public String getOrganizer(){
         return organizer;
     }
-    public void setOrganizaror(String organizator){
+    public void setOrganizator(String organizator){
         this.organizer = organizator;
     }
-    public String getImageRef() {
-        return imageRef;
+    public String getImage() {
+        return image;
     }
-    public void setImageRef(String imageRef) {
-        this.imageRef = imageRef;
+    public void setImage(String image) {
+        this.image = image;
     }
 
 
     @Override
     public String toString() {
-        return "Event{" + "eventId='" + eventId + '\'' + ", name='" + name + '\'' + ", date=" + date + ", organizer=" + organizer + ", time=" + time + ", address='" + address + '\'' + ", city='" + city + '\'' + ", description='" + description + '\'' + ", phone='" + phone + '\'' + ", email='" + email + '\'' + '}';
+        return "Event{" + "eventId='" + eventId + '\'' + ", name='" + name + '\'' + ", date=" + date + ", organizer=" + organizer + ", time=" + time + ", address='" + address + '\'' + ", city='" + city + '\'' + ", description='" + description + '\'' + ", phone='" + phone + '\'' + ", email='" + email + '\'' + '}' + image;
     }
 }
 
