@@ -24,19 +24,30 @@ public class BioDialog extends DialogFragment {
     Button dismiss;
     private EditText bioET;
 
+    /**
+     * Inflatina dialoga ir nustato mygtuku veikima
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bio_dialog, container, false);
 
+        //Paima uid prisijungusio vartotojo
         uid = getArguments().getString("uid");
 
+        //Paima mygtukus
         accept = view.findViewById(R.id.acceptBio);
         dismiss = view.findViewById(R.id.dismissBio);
         bioET = view.findViewById(R.id.bioEditText);
 
+        //Paima esama bio is DB
         setText(uid);
 
+        //Jei paspaudziamas sis mygtukas, tai kas buvo irasyta i EditText yra ikeliama i duomenu baze ir Dialogas yra isjungiamas
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +55,8 @@ public class BioDialog extends DialogFragment {
                 dismiss();
             }
         });
+
+        //Jei paspaudziamas sis mygtukas, niekas nera keiciama ir Dialogas yra isjungiamas
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +67,20 @@ public class BioDialog extends DialogFragment {
         return view;
     }
 
+    /**
+     * Bio yra ikeliama i DB
+     * @param bio
+     */
     public void setBio(String bio) {
 
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Bio", bio);
     }
 
+    /**
+     * Nustato bio EditText teksta i ta kuris buvo paimtas is DB
+     * @param uid
+     */
     public void setText(String uid){
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

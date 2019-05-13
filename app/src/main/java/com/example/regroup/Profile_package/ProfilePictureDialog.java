@@ -45,13 +45,16 @@ public class ProfilePictureDialog extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.gallery_photo_select_dialog, container, false);
 
+        //Paima uid prisijungusio vartotojo
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = currentFirebaseUser.getUid();
 
+        //Paima Button
         buttonGallery = view.findViewById(R.id.buttonGallery);
         buttonCamera = view.findViewById(R.id.buttonCamera);
         buttonDismiss = view.findViewById(R.id.buttonDismiss);
 
+        //Paspaudus mygtuka leidziama pasirinkti nuotrauka is galerijos, nuotrauka yra issaugojama i DB
         buttonGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +67,7 @@ public class ProfilePictureDialog extends DialogFragment {
                 }
             }
         });
+        //Paspaudus mygtuka leidziama nuotrauka nufotografuoti su galine telefono kamera, nuotrauka yra issaugojama i DB
         buttonCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +82,7 @@ public class ProfilePictureDialog extends DialogFragment {
                 }
             }
         });
+        //Paspaudus mygtuka Dialogas yra isjungiamas
         buttonDismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +93,9 @@ public class ProfilePictureDialog extends DialogFragment {
         return view;
     }
 
+    /**
+     * Praso, kad butu atidaryta galerija
+     */
     private void startGallery() {
         Intent cameraIntent = new Intent(Intent.ACTION_GET_CONTENT);
         cameraIntent.setType("image/*");
@@ -96,6 +104,12 @@ public class ProfilePictureDialog extends DialogFragment {
         }
     }
 
+    /**
+     * Tikrina ar turetu atidaryti kamera ar galerija ir kvieciamas metodas, kad ikelti nuotrauka i DB
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super method removed
@@ -117,6 +131,10 @@ public class ProfilePictureDialog extends DialogFragment {
         }
     }
 
+    /**
+     * Nuotrauka yra ikeliama i galerija
+     * @param bitmap
+     */
     public void uploadImage(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -142,6 +160,12 @@ public class ProfilePictureDialog extends DialogFragment {
         });
     }
 
+    /**
+     * Praso, kad butu atidaryta kamera
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

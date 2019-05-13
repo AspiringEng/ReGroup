@@ -37,16 +37,21 @@ public class ProfileLocationInput extends DialogFragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.profile_location_input_dialog, container, false);
 
+        //Paima uid prisijungusio vartotojo
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         uid = currentFirebaseUser.getUid();
 
+        //Paima Button
         buttonAccept = view.findViewById(R.id.accept);
         buttonDismiss = view.findViewById(R.id.dismiss);
 
+        //Paima EditText
         cityET = view.findViewById(R.id.profileCityET);
 
+        //Paima anksciau parasyta miesta
         getLocation(uid);
 
+        //Paspaudus mygtuka parasytas miestas yra issaugojamas i DB, Dialogas yra isjungiamas
         buttonAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +60,7 @@ public class ProfileLocationInput extends DialogFragment {
             }
         });
 
+        //Paspaudus mygtuka Dialogas yra isjungiamas
         buttonDismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,11 +70,20 @@ public class ProfileLocationInput extends DialogFragment {
         return view;
     }
 
+    /**
+     * miestas yra issaugojamas i DB
+     * @param uid
+     * @param city
+     */
     public void setLocation(String uid, String city) {
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Miestas", city);
     }
 
+    /**
+     * Paima anksciau parasyta miesta
+     * @param uid
+     */
     public void getLocation(String uid){
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

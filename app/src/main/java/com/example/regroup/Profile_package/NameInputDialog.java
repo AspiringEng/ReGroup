@@ -41,16 +41,24 @@ public class NameInputDialog extends DialogFragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.name_input_dialog, container, false);
 
+        //Paima EditText
         nameET = view.findViewById(R.id.firstName);
         lastNameET = view.findViewById(R.id.lastName);
+
+        //Paima DatePicker
         birthDate = view.findViewById(R.id.birthDate);
+
+        //Paima Button
         accept = view.findViewById(R.id.accept);
         dismiss = view.findViewById(R.id.dismiss);
 
+        //Paima uid prisijungusio vartotojo
         uid = getArguments().getString("uid");
 
+        //Nustato anksciau parasyta varda ir pavarde, taip pat nustato aksciau pasirinkta gimimo data
         setText(uid);
 
+        //Paspaudus mygtuka parasyti vardas ir pavarde, taip pat ir pasirinkta gimimo data yra issaugoma DB, Dialogas yra isjungiamas
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +68,8 @@ public class NameInputDialog extends DialogFragment {
                 dismiss();
             }
         });
+
+        //Paspaudus mygtuka Dialogas yra isjungiamas
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +80,13 @@ public class NameInputDialog extends DialogFragment {
         return view;
     }
 
+    /**
+     * vardas ir pavarde, taip pat ir pasirinkta gimimo data yra issaugoma DB
+     * @param uid
+     * @param vardas
+     * @param pavarde
+     * @param gimimoData
+     */
     public void setName(String uid, String vardas, String pavarde, Timestamp gimimoData) {
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.update("Vardas", vardas);
@@ -77,6 +94,10 @@ public class NameInputDialog extends DialogFragment {
         docRef.update("Gimimo data", gimimoData);
     }
 
+    /**
+     * Nustato anksciau parasyta varda ir pavarde, taip pat nustato aksciau pasirinkta gimimo data
+     * @param uid
+     */
     public void setText(String uid){
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -92,23 +113,5 @@ public class NameInputDialog extends DialogFragment {
                 }
             }
         });
-    }
-
-    private String getAge(int year, int month, int day){
-        Calendar dob = Calendar.getInstance();
-        Calendar today = Calendar.getInstance();
-
-        dob.set(year, month, day);
-
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
-        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
-            age--;
-        }
-
-        Integer ageInt = new Integer(age);
-        String ageS = ageInt.toString();
-
-        return ageS;
     }
 }

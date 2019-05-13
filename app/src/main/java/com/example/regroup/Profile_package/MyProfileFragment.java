@@ -50,19 +50,28 @@ public class MyProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile, container, false);
 
+        //Paima uid prisijungusio vartotojo
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-
-        txtv = view.findViewById(R.id.Name);
-        bioButton = view.findViewById(R.id.bioButton);
-        locationButton = view.findViewById(R.id.locationButton);
-        profileIMG = view.findViewById(R.id.profileIMG);
-        favActivitiesButton = view.findViewById(R.id.favoriteActivitiesButton);
-
         uid = currentFirebaseUser.getUid();
 
+        //Paima TextView
+        txtv = view.findViewById(R.id.Name);
+
+        //Paima Button
+        bioButton = view.findViewById(R.id.bioButton);
+        locationButton = view.findViewById(R.id.locationButton);
+        favActivitiesButton = view.findViewById(R.id.favoriteActivitiesButton);
+
+        //Paima ImageView
+        profileIMG = view.findViewById(R.id.profileIMG);
+
+        //Nustato is DB paimta Varda Pavarde ir Amziu
         getName(uid);
+
+        //Nustato profilio nuotrauka
         getProfilePic(uid);
 
+        //Paspaudus ant vardo atidaromas NameInputDialog
         txtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +83,7 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+        //Paspaudus mygtuka atidaromas BioDialog
         bioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +95,7 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+        //Papsaudus ant nuotraukos ProfilePictureDialog
         profileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +104,7 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+        //Papsaudus ant mygtuko yra atidaromas ProfileLocationInput
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +113,7 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+        //Paspaudus ant mygtuko yra atidaromas FavoriteActivityInput
         favActivitiesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +125,13 @@ public class MyProfileFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Suskaiciuoja amziu pagal per parametrus paduodama gimimo data
+     * @param year
+     * @param month
+     * @param day
+     * @return
+     */
     private String getAge(int year, int month, int day){
 
         String ageS = "";
@@ -135,6 +155,10 @@ public class MyProfileFragment extends Fragment {
         return ageS;
     }
 
+    /**
+     * Paima varda pavarde ir gimimo data is DB ir juos nustato ant txtv
+     * @param uid
+     */
     public void getName(String uid){
         DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -150,6 +174,10 @@ public class MyProfileFragment extends Fragment {
         });
     }
 
+    /**
+     * Paima profilio nuotrauka is DB ir ja nustato ant ImageView
+     * @param uid
+     */
     public void getProfilePic(String uid){
         final StorageReference imagesRef = storageRef.child("Users_Images/" + uid + ".jpeg");
         final long ONE_MEGABYTE = 1024 * 1024;
