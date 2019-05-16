@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.common.collect.HashBiMap;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,11 +26,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EventsFragment extends Fragment {
 
@@ -94,19 +98,28 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-
+                Map<String, Object> map = new HashMap<>();
+                map.put("Id", currentUId);
                 cards obj = (cards) dataObject;
                 String eventId = obj.getId();
                 String eventName = obj.getName();
                 String eventDate = obj.getDate();
-                Log.i("ON EXIT INFO", eventId + " ---- " + eventName + "" + eventDate);
-               // eventsRef
-                Toast.makeText(getActivity(), "Yep!", Toast.LENGTH_SHORT).show();
+                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
+                eventsRef.document(eventName + eventDate).collection("Nope").add(map);
+                Toast.makeText(getActivity(), "Nope!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(getActivity(), "Nope!", Toast.LENGTH_SHORT).show();
+                Map<String, Object> map = new HashMap<>();
+                map.put("Id", currentUId);
+                cards obj = (cards) dataObject;
+                String eventId = obj.getId();
+                String eventName = obj.getName();
+                String eventDate = obj.getDate();
+                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
+                eventsRef.document(eventName + eventDate).collection("Yep").add(map);
+                Toast.makeText(getActivity(), "Yep!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
