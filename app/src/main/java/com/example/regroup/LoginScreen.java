@@ -72,11 +72,11 @@ public class LoginScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance(); // initializing FirebaseAuth instance
         final FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        /*// Auto-login if user already signed in before.
+        // Auto-login if user already signed in before.
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(LoginScreen.this, MainActivity.class));
             finish();
-        }*/
+        }
 
         // Setting up buttons and so on.
         Button loginButton = findViewById(R.id.button3);
@@ -180,6 +180,13 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
+    // Uzblokuoja back mygtuka
+    @Override
+    public void onBackPressed()
+    {
+        return;
+    }
+
     // Tikrina ar profilis yra uzpildytas.
     private void isProfileEmpty() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -205,6 +212,8 @@ public class LoginScreen extends AppCompatActivity {
                         if (fName.isEmpty() || lName.isEmpty() || date.isEmpty() || city.isEmpty() || bio.isEmpty() || activity.isEmpty())
                         {
                             startActivity(new Intent(LoginScreen.this, ProfileFilling.class));
+                            finish();
+                            //System.exit(0);
                         }
                         else
                         {
@@ -214,6 +223,8 @@ public class LoginScreen extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginScreen.this, MainActivity.class));
+                            finish();
+                            //System.exit(0);
                         }
                     }
                     else

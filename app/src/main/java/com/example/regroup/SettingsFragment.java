@@ -50,6 +50,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         firebaseAuth.signOut();
         Intent intent = new Intent(getActivity(), LoginScreen.class);
         startActivity(intent);
+        getActivity().finish();
     }
 
     public void delete(){

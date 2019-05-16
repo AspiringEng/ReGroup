@@ -86,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println("uid of user on mainActivity: " + uid);
     }
 
+    // Uzblokuoja back mygtuka
+    @Override
+    public void onBackPressed()
+    {
+        return;
+    }
+
 
 
    /* FirebaseDatabase database = FirebaseDatabase.getInstance();
