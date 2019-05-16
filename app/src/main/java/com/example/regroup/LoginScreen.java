@@ -60,6 +60,7 @@ public class LoginScreen extends AppCompatActivity {
     private CallbackManager mCallBackManager;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
+    private long backPressedTime;
 
     String uid;
     String name;
@@ -79,7 +80,7 @@ public class LoginScreen extends AppCompatActivity {
         }
 
         // Setting up buttons and so on.
-        Button loginButton = findViewById(R.id.button3);
+        final Button loginButton = findViewById(R.id.button3);
         Button registerButton = findViewById(R.id.button2);
         TextView forgotPassword = findViewById(R.id.forgotpassword);
 
@@ -129,6 +130,7 @@ public class LoginScreen extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -184,7 +186,17 @@ public class LoginScreen extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        return;
+        if (backPressedTime + 500 > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 
     // Tikrina ar profilis yra uzpildytas.
@@ -224,7 +236,6 @@ public class LoginScreen extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginScreen.this, MainActivity.class));
                             finish();
-                            //System.exit(0);
                         }
                     }
                     else
