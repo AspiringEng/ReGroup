@@ -11,7 +11,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
-        android:background="@drawable/background_1080x1920"
+        android:background="@drawable/background_1080x1920_tinted"
         android:fitsSystemWindows="true">
         <!--android:theme="@style/AppTheme.AppBarOverlay">-->
 
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@drawable/background_1080x1920"
+            app:contentScrim="@drawable/background_1080x1920_tinted"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -28,7 +28,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_1080x1920"
+                android:background="@drawable/background_1080x1920_tinted"
                 app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
             <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
 

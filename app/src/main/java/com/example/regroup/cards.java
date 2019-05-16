@@ -87,10 +87,10 @@ public class cards {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getEventId(){
+    public String getId(){
         return eventId;
     }
-    public void setEventId(String eventId){
+    public void setId(String eventId){
         this.eventId = eventId;
     }
     public String getName(){

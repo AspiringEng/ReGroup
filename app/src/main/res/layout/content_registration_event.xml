@@ -51,9 +51,9 @@
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="56dp"
-            android:background="@drawable/background_1080x1920"
+            android:background="@drawable/background_1080x1920_tinted"
             android:onClick="pickDate"
-            android:text="pick date"
+            android:text="pick date!"
             tools:ignore="OnClick" />
         <EditText
             android:id="@+id/ERdate"
@@ -138,7 +138,7 @@
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/background_1080x1920"
+            android:background="@drawable/background_1080x1920_tinted"
             android:onClick="addImage"
             android:text="Add Image"
             tools:ignore="OnClick" />
@@ -156,7 +156,7 @@
             android:layout_width="364dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/background_1080x1920"
+            android:background="@drawable/background_1080x1920_tinted"
             android:layout_marginTop="56dp"
             android:onClick="createEvent"
             android:text="Create Event" />

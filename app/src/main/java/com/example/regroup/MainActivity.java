@@ -24,7 +24,6 @@ import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";  //gal...
     private String uid;
 
     private FirebaseAuth mAuth;
@@ -69,26 +68,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
         //Pridedu listeneri, zino kuris nav pagal id (menu.bottom_nav.xml nurodyta)
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.setSelectedItemId(R.id.nav_events);
-        Log.d("main", "The onCreate() event");
-        createEvent();
+        //createEvent(); Useless????
 
         /*Siek tiek pakeiciau, nes gan daznai uzluzdavo programa, kai nueidavau i
           My Profile skilti - Arturas */
-        FirebaseUser currentFirebaseUser = mAuth.getInstance().getCurrentUser() ;
-        uid = currentFirebaseUser.getUid();
+        /*FirebaseUser currentFirebaseUser = mAuth.getInstance().getCurrentUser() ;
+        uid = currentFirebaseUser.getUid();*/
 
         //uid = getIntent().getStringExtra("uid");
 
-        System.out.println("uid of user on mainActivity: " + uid);
+        //System.out.println("uid of user on mainActivity: " + uid);
     }
 
 
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+   /* FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("users");
 
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
     }
-
+*/
     public void startEventRegistration(View view) {
         Intent eventRegistration = new Intent(this, RegistrationEvent.class);
         startActivity(eventRegistration);

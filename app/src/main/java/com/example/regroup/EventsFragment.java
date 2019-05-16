@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,12 +33,11 @@ import java.util.List;
 
 public class EventsFragment extends Fragment {
 
-    private cards cards_data[]; // might be unescessary
-    private final String KEY_EVENTS = "events";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference eventsRef = db.collection("events");
 
-    private MyArrayAdapter MyArrayAdapter;
+    private FirebaseAuth mAuth;
+    private String currentUId;
 
     List<cards> rowItems;
 
@@ -46,8 +46,13 @@ public class EventsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        Log.i("CREATION", "created");
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUId = mAuth.getCurrentUser().getUid();
+
+        Log.i("CURRENT USER ID", currentUId);
         rowItems = new ArrayList<>();
 
         arrayAdapter = new MyArrayAdapter(getActivity(), R.layout.item, rowItems);
@@ -55,7 +60,6 @@ public class EventsFragment extends Fragment {
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) view.findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
-
         eventsRef.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -64,11 +68,8 @@ public class EventsFragment extends Fragment {
                         if(!queryDocumentSnapshots.isEmpty()){
                             for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
                                 rowItems.add(snapshot.toObject(cards.class));
+                                arrayAdapter.notifyDataSetChanged();
                             }
-                            for(cards event : rowItems){
-                                Log.i("AN EVENT", event.toString());
-                            }
-                            Log.i("EVENT INFO", rowItems.get(0).toString());
                         } else {
                             Toast.makeText(getActivity(), "No events to show", Toast.LENGTH_SHORT).show();
                         }
@@ -93,15 +94,19 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                //Do something on the left!
-                //You also have access to the original object.
-                //If you want to use it just cast it (String) dataObject
-                Toast.makeText(getActivity(), "left", Toast.LENGTH_SHORT).show();
+
+                cards obj = (cards) dataObject;
+                String eventId = obj.getId();
+                String eventName = obj.getName();
+                String eventDate = obj.getDate();
+                Log.i("ON EXIT INFO", eventId + " ---- " + eventName + "" + eventDate);
+               // eventsRef
+                Toast.makeText(getActivity(), "Yep!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(getActivity(), "right", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Nope!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
