@@ -146,7 +146,7 @@ public class UserRegistration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Intent intent = new Intent(UserRegistration.this, MainActivity.class);
+                                Intent intent = new Intent(UserRegistration.this, ProfileFilling.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
@@ -170,8 +170,8 @@ public class UserRegistration extends AppCompatActivity {
     private void createUserInDB(String uid) {
 
         Map<String, Object> user = new HashMap<>();
-        user.put("Vardas", "Vardas");
-        user.put("Pavarde", "Pavarde");
+        user.put("Vardas", "");
+        user.put("Pavarde", "");
         user.put("Miestas", "");
         user.put("Gimimo data", new Timestamp(new Date()));
         user.put("Bio", "");

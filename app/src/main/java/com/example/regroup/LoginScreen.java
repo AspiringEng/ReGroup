@@ -32,11 +32,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,6 +50,7 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -151,12 +155,8 @@ public class LoginScreen extends AppCompatActivity {
                                         }
                                     });
 
-                            //Perduoda mainActivity uid, tam kad butu galima kitiems fragmentams
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                            intent.putExtra("uid", uid);
-                            startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginScreen.this, MainActivity.class));
+                            // Patikrina ar duomenys yra uzpildyti ar ne. Jei ne, meta i ProfileFilling activity. Jei taip, meta i MainActivity.
+                            isProfileEmpty();
                         }
                     });
                 }
@@ -176,6 +176,55 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginScreen.this, PasswordRecovery.class));
+            }
+        });
+    }
+
+    // Tikrina ar profilis yra uzpildytas.
+    private void isProfileEmpty() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DocumentReference docRef = db.collection("users").document(currentUser.getUid());
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists())
+                    {
+                        Map<String, Object> user = document.getData();
+                        String fName = user.get("Vardas").toString();
+                        String lName = user.get("Pavarde").toString();
+                        String date = user.get("Gimimo data").toString();
+                        String city = user.get("Miestas").toString();
+                        String bio = user.get("Bio").toString();
+                        String activity = user.get("Megstamos veiklos").toString();
+
+                        if (fName.isEmpty() || lName.isEmpty() || date.isEmpty() || city.isEmpty() || bio.isEmpty() || activity.isEmpty())
+                        {
+                            startActivity(new Intent(LoginScreen.this, ProfileFilling.class));
+                        }
+                        else
+                        {
+                            //Perduoda mainActivity uid, tam kad butu galima kitiems fragmentams
+                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            intent.putExtra("uid", uid);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Loggin successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginScreen.this, MainActivity.class));
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Document does not exist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -206,7 +255,7 @@ public class LoginScreen extends AppCompatActivity {
         user.put("Vardas", firstAndLast[0]);
         user.put("Pavarde", firstAndLast[1]);
         user.put("Miestas", "");
-        user.put("Gimimo data", "");
+        user.put("Gimimo data", new Timestamp(new Date()));
         user.put("Bio", "");
         user.put("Megstamiausios veiklos", "");
 

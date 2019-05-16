@@ -27,8 +27,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText,GoogleAppIndexingWarning">
+        <activity android:name=".ProfileFilling">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
 
-
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+        </activity>
         <activity android:name=".PasswordRecovery">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
@@ -36,7 +41,6 @@
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,12 +68,10 @@
         <activity
             android:name=".Registration"
             android:parentActivityName=".MainActivity" />
-
-
-
         <activity android:name=".Chat.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
+
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
@@ -85,23 +87,22 @@
             android:name=".Chat.ResetPasswordActivity"
             android:parentActivityName=".Chat.LoginActivity" />
 
-        <service android:name=".Chat.Notifications.MyFirebaseIdService"
+        <service
+            android:name=".Chat.Notifications.MyFirebaseIdService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <service android:name=".Chat.Notifications.MyFirebaseMessaging"
+        <service
+            android:name=".Chat.Notifications.MyFirebaseMessaging"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
