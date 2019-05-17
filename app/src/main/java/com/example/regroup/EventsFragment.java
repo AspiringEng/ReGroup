@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.common.collect.HashBiMap;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,8 @@ public class EventsFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference eventsRef = db.collection("events");
 
+    DatabaseReference userRef;
+
     private FirebaseAuth mAuth;
     private String currentUId;
 
@@ -56,7 +59,10 @@ public class EventsFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
 
-        Log.i("CURRENT USER ID", currentUId);
+        userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUId);
+
+
+        Log.i("USER", userRef.toString());
         rowItems = new ArrayList<>();
 
         arrayAdapter = new MyArrayAdapter(getActivity(), R.layout.item, rowItems);
@@ -98,27 +104,37 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("Id", currentUId);
-                cards obj = (cards) dataObject;
-                String eventId = obj.getId();
-                String eventName = obj.getName();
-                String eventDate = obj.getDate();
-                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
-                eventsRef.document(eventName + eventDate).collection("Nope").add(map);
+//                Map<String, Object> map = new HashMap<>();
+//                map.put("Id", currentUId);
+//                cards obj = (cards) dataObject;
+//                String eventId = obj.getId();
+//                String eventName = obj.getName();
+//                String eventDate = obj.getDate();
+//                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
+//                eventsRef.document(eventName + eventDate).collection("Nope").add(map);
+
+                  cards obj = (cards) dataObject;
+                  String eventId = obj.getId();
+                  userRef.child("connections").child("nope").child(eventId).setValue(true);
+
                 Toast.makeText(getActivity(), "Nope!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("Id", currentUId);
+//                Map<String, Object> map = new HashMap<>();
+//                map.put("Id", currentUId);
+//                cards obj = (cards) dataObject;
+//                String eventId = obj.getId();
+//                String eventName = obj.getName();
+//                String eventDate = obj.getDate();
+//                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
+//                eventsRef.document(eventName + eventDate).collection("Yep").add(map);
+
                 cards obj = (cards) dataObject;
                 String eventId = obj.getId();
-                String eventName = obj.getName();
-                String eventDate = obj.getDate();
-                Log.i("ON EXIT INFO", eventId + " ---- " + eventName);
-                eventsRef.document(eventName + eventDate).collection("Yep").add(map);
+                userRef.child("connections").child("yep").child(eventId).setValue(true);
+
                 Toast.makeText(getActivity(), "Yep!", Toast.LENGTH_SHORT).show();
             }
 

@@ -17,6 +17,7 @@ public class cards {
     private String email;
     private String image;
 
+
     public cards(){}
 
     public cards(String eventId, String name, String date, String organizator){
