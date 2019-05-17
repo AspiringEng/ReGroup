@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -76,8 +77,22 @@ public class EventsFragment extends Fragment {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Log.i("DATABASE ACCESSED", "SUCCESSFULLY: ");
                         if(!queryDocumentSnapshots.isEmpty()){
-                            for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
-                                rowItems.add(snapshot.toObject(cards.class));
+                            for (final DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                                userRef.child("connections").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if(!dataSnapshot.child("yep").hasChild(snapshot.toObject(cards.class).getId()) && !dataSnapshot.child("nope").hasChild(snapshot.toObject(cards.class).getId())){
+                                            rowItems.add(snapshot.toObject(cards.class));
+                                            arrayAdapter.notifyDataSetChanged();
+                                            Log.i("INIF", snapshot.toObject(cards.class).getId().toString());
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        Toast.makeText(getActivity(), "Something went wrong when getting events", Toast.LENGTH_SHORT);
+                                    }
+                                });
                                 arrayAdapter.notifyDataSetChanged();
                             }
                         } else {
