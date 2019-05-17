@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.regroup.Events.Event;
 import com.example.regroup.Events.RegistrationEvent;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private String uid;
 
     private FirebaseAuth mAuth;
+
+    private long backPressedTime;
 
     //Sukuriu Bottom nav selection listeneri, tam, kad reaguotu i bottom nav paspaudimus
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -84,6 +87,23 @@ public class MainActivity extends AppCompatActivity {
         //uid = getIntent().getStringExtra("uid");
 
         //System.out.println("uid of user on mainActivity: " + uid);
+    }
+
+    // Uzblokuoja back mygtuka
+    @Override
+    public void onBackPressed()
+    {
+        if (backPressedTime + 500 > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 
 
