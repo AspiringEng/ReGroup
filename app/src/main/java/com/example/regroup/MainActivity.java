@@ -6,22 +6,19 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.regroup.Events.Event;
+import com.example.regroup.Events.EventManagementActivity;
 import com.example.regroup.Events.RegistrationEvent;
+import com.example.regroup.Fragments.EventsFragment;
+import com.example.regroup.Fragments.MatchesFragment;
+import com.example.regroup.Fragments.SettingsFragment;
 import com.example.regroup.Profile_package.MyProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.example.regroup.Chat.Fragments.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
-    //Sukuriu Bottom nav selection listeneri, tam, kad reaguotu i bottom nav paspaudimus
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -59,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new UsersFragment();
                             break;
                     }
-                    //Tam, kad rodytu fragmentus:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
-                    return true; //Grazini true tam, kad rodytu kuri item'a pasirinkai
+                    return true;
                 }
             };
 
@@ -72,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        //Pridedu listeneri, zino kuris nav pagal id (menu.bottom_nav.xml nurodyta)
-
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        bottomNav.setSelectedItemId(R.id.nav_events);
+        bottomNav.setSelectedItemId(R.id.nav_settings);
+
+
         //createEvent(); Useless????
 
         /*Siek tiek pakeiciau, nes gan daznai uzluzdavo programa, kai nueidavau i

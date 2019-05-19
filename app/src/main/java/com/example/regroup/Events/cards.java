@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Events;
 
 import java.sql.Date;
 import java.sql.Time;

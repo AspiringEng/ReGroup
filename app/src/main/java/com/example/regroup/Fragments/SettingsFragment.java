@@ -1,4 +1,4 @@
-package com.example.regroup;
+package com.example.regroup.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.regroup.Events.EventManagementActivity;
+import com.example.regroup.LoginScreen;
+import com.example.regroup.MainActivity;
+import com.example.regroup.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -29,6 +33,14 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         Button del = view.findViewById(R.id.delete);
         del.setOnClickListener(this);
+
+        Button eventMgmtBtn = view.findViewById(R.id.manageEventsBtn);
+
+        eventMgmtBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivity(new Intent(getActivity(), EventManagementActivity.class));
+            }
+        });
         return view;
     }
 

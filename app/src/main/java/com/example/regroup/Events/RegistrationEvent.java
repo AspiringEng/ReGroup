@@ -27,6 +27,8 @@ import android.widget.Toast;
 import com.example.regroup.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -53,6 +55,8 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_IMAGE = "image";
+    private static final String KEY_OWNER = "owner";
+
     int day, month, year, hour, minute;
     int fday, fmonth, fyear, fhour, fminute;
 
@@ -144,6 +148,7 @@ public class RegistrationEvent extends AppCompatActivity implements DatePickerDi
         event.put(KEY_PHONE, phone);
         event.put(KEY_EMAIL, email);
         event.put(KEY_IMAGE, imageRef);
+        event.put(KEY_OWNER, FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         final String id  = name+date;
 

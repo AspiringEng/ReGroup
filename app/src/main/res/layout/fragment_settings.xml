@@ -36,6 +36,19 @@
         tools:layout_conversion_wrapWidth="231" />
 
     <Button
+        android:id="@+id/manageEventsBtn"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:text="Manage my events"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445"
+        tools:layout_conversion_wrapHeight="126"
+        tools:layout_conversion_wrapWidth="231" />
+
+    <Button
         android:id="@+id/delete"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
