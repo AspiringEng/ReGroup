@@ -20,7 +20,7 @@ public class PasswordRecovery extends AppCompatActivity {
     Button button;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_recovery);
 
