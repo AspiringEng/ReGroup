@@ -123,6 +123,14 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
                 }
             });
 
+            AppCompatImageButton chat = convertView.findViewById(R.id.participants_chat2);
+                chat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //do stuff
+                    }
+                });
+
             name.setText(names.toArray()[position].toString());
             Log.i("TEST", "getView: " + names.toArray()[position].toString());
 
