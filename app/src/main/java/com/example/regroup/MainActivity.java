@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ShowProfileActivity.class);
             startActivity(intent);
             finish();
-    }
+    }*/
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
