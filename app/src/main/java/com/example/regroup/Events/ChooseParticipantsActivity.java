@@ -1,9 +1,11 @@
 package com.example.regroup.Events;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.regroup.Profile_package.ShowProfileActivity;
 import com.example.regroup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -109,9 +112,16 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
 
             convertView = getLayoutInflater().inflate(R.layout.custom_chooseparticipants_layout, null);
 
+            final int xd = position;
 
             TextView name = convertView.findViewById(R.id.nameOfParticipant);
-            ImageView pic = convertView.findViewById(R.id.participants_Photo);
+            AppCompatImageButton profile = convertView.findViewById(R.id.participants_profile);
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openShowProfileActivity(userIds.get(xd));
+                }
+            });
 
             name.setText(names.toArray()[position].toString());
             Log.i("TEST", "getView: " + names.toArray()[position].toString());
@@ -137,5 +147,12 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void openShowProfileActivity(String userId){
+        Intent intent = new Intent(this, ShowProfileActivity.class);
+        intent.putExtra("userId", userId);
+
+        startActivity(intent);
     }
 }

@@ -67,7 +67,7 @@ public class ShowProfileActivity extends AppCompatActivity {
         IMG = findViewById(R.id.profileIMG);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String currentUser = getIntent().getStringExtra("userId");
         CollectionReference usersRef = db.collection("users");
 
         //DocumentReference docRef = db.collection("users").document(currentUser.getUid());
@@ -78,7 +78,7 @@ public class ShowProfileActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (final DocumentSnapshot snapshot: task.getResult()) {
-                                if(snapshot.getString("Vardas").equals("Keksas"))
+                                if(snapshot.getString("id").equals(currentUser))
                                 {
                                     setProfilePic(snapshot.getString("id"));
                                     NAME.setText(snapshot.getString("Vardas") + " " + snapshot.getString("Pavarde"));
