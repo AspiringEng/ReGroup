@@ -63,9 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_settings:
                             selectedFragment = new SettingsFragment();
                             break;
-                        case R.id.nav_chat:
-                            selectedFragment = new UsersFragment();
-                            break;
+
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
