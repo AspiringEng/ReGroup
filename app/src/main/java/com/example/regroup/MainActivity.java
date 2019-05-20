@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_matches:
-                            selectedFragment = new MatchesFragment();
+                                selectedFragment = new ChatsFragment();
+                                
                             break;
                         case R.id.nav_events:
                             selectedFragment = new EventsFragment();
