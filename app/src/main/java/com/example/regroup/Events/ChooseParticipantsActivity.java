@@ -47,7 +47,7 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
     Adapter adapter = new Adapter();
     ArrayList<String> userIds = new ArrayList<>();
     ArrayList<String> names;
-
+    ArrayList<String> userIdsInOrder = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,9 +69,14 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if(task.isSuccessful()){
                                             for (final DocumentSnapshot snapshot : task.getResult()) {
-                                                if(userIds.contains(snapshot.get("id").toString())){
-                                                    names.add(snapshot.get("Vardas").toString());
+                                                for (String id: userIds) {
+                                                    if(id.equals(snapshot.get("id").toString())){
+                                                        Log.i("TEST", "TEST IDS : " + id + "   " + snapshot.get("id").toString());
+                                                        names.add(snapshot.get("Vardas").toString());
+                                                        userIdsInOrder.add(id);
+                                                    }
                                                 }
+
                                             }
                                         }
                                         listView = findViewById(R.id.participantsListView);
@@ -120,7 +125,7 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openShowProfileActivity(userIds.get(xd));
+                    openShowProfileActivity(userIdsInOrder.get(xd));
                 }
             });
 
@@ -128,7 +133,7 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
                 chat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       openChat(userIds.get(xd));
+                       openChat(userIdsInOrder.get(xd));
                     }
                 });
 
