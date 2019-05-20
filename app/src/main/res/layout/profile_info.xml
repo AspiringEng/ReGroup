@@ -112,18 +112,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/favoriteActivitiesButton"
-                style="@android:style/Animation.Translucent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                android:text="My Favorite Activities"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
