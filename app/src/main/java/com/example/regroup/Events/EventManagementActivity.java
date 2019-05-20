@@ -1,5 +1,6 @@
 package com.example.regroup.Events;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -81,6 +82,7 @@ public class EventManagementActivity extends AppCompatActivity {
         images = new ArrayList<>();
         eventId = new ArrayList<>();
 
+
         eventsRef.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -113,7 +115,7 @@ public class EventManagementActivity extends AppCompatActivity {
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Log.i("TEST", "onItemClick: " + adapter.getItem(position));
+                                openParticipantsActivity(eventId.toArray()[position].toString());
                             }
                         });
                         registerForContextMenu(listView);
@@ -161,5 +163,12 @@ public class EventManagementActivity extends AppCompatActivity {
 
     public void DeleteItem(final String itemId){
         eventsRef.document(itemId).delete();
+    }
+
+    public void openParticipantsActivity(String eventId){
+        Intent intent = new Intent(this, ChooseParticipantsActivity.class);
+        intent.putExtra("eventId", eventId);
+
+        startActivity(intent);
     }
 }

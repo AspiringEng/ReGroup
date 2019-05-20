@@ -74,7 +74,8 @@ public class EventsFragment extends Fragment {
                                 userRef.child("connections").addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if(!dataSnapshot.child("yep").hasChild(snapshot.toObject(cards.class).getId()) && !dataSnapshot.child("nope").hasChild(snapshot.toObject(cards.class).getId())){
+                                        if(!dataSnapshot.child("yep").hasChild(snapshot.toObject(cards.class).getId()) && !dataSnapshot.child("nope").hasChild(snapshot.toObject(cards.class).getId())
+                                        && !snapshot.get("owner").equals(currentUId)){
                                             rowItems.add(snapshot.toObject(cards.class));
                                             arrayAdapter.notifyDataSetChanged();
                                             Log.i("INIF", snapshot.toObject(cards.class).getId().toString());
