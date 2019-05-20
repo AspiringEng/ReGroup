@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.regroup.Chat.MessageActivity;
 import com.example.regroup.Profile_package.ShowProfileActivity;
 import com.example.regroup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -127,7 +128,7 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
                 chat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //do stuff
+                       openChat(userIds.get(xd));
                     }
                 });
 
@@ -160,6 +161,13 @@ public class ChooseParticipantsActivity extends AppCompatActivity {
     public void openShowProfileActivity(String userId){
         Intent intent = new Intent(this, ShowProfileActivity.class);
         intent.putExtra("userId", userId);
+
+        startActivity(intent);
+    }
+
+    public void openChat(String userId){
+        Intent intent = new Intent(ChooseParticipantsActivity.this, MessageActivity.class);
+        intent.putExtra("userid", userId);
 
         startActivity(intent);
     }
