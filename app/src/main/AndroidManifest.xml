@@ -131,6 +131,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Profile_package.ShowProfileActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
         <activity android:name=".Events.ChooseParticipantsActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

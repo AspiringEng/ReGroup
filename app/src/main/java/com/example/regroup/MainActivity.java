@@ -17,6 +17,7 @@ import com.example.regroup.Fragments.EventsFragment;
 import com.example.regroup.Fragments.MatchesFragment;
 import com.example.regroup.Fragments.SettingsFragment;
 import com.example.regroup.Profile_package.MyProfileFragment;
+import com.example.regroup.Profile_package.ShowProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.regroup.Chat.Fragments.*;
 
@@ -27,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private long backPressedTime;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+        //check if user is null
+            Intent intent = new Intent(MainActivity.this, ShowProfileActivity.class);
+            startActivity(intent);
+            finish();
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
