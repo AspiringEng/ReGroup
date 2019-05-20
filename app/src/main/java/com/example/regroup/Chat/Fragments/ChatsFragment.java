@@ -29,6 +29,8 @@ import java.util.List;
 
 public class ChatsFragment extends Fragment {
 
+    public static int MATCH_COUNT = 0;
+
     private RecyclerView recyclerView;
 
     private UserAdapter userAdapter;
@@ -60,6 +62,7 @@ public class ChatsFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chatlist chatlist = snapshot.getValue(Chatlist.class);
                     usersList.add(chatlist);
+
                 }
 
                 chatList();
@@ -72,7 +75,6 @@ public class ChatsFragment extends Fragment {
         });
 
         updateToken(FirebaseInstanceId.getInstance().getToken());
-
 
         return view;
     }
