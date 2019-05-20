@@ -170,6 +170,7 @@ public class UserRegistration extends AppCompatActivity {
     private void createUserInDB(String uid) {
 
         Map<String, Object> user = new HashMap<>();
+        user.put("id",uid);
         user.put("Vardas", "");
         user.put("Pavarde", "");
         user.put("Miestas", "");

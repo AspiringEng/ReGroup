@@ -93,18 +93,6 @@ public class EventManagementActivity extends AppCompatActivity {
                                     if(snapshot.get("owner").toString().equals(currentUser)){
                                         names.add(snapshot.toObject(cards.class).getName());
                                         eventId.add(snapshot.toObject(cards.class).getId());
-                                        date.add(snapshot.toObject(cards.class).getDate());
-//                                        StorageReference imagesRef = storageRef.child("Events_Images/" + snapshot.toObject(cards.class).getImage());
-//                                        imagesRef.getBytes(Long.MAX_VALUE).addOnCompleteListener(new OnCompleteListener<byte[]>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<byte[]> task) {
-//                                                if(task.isComplete()){
-//                                                    Bitmap bitmap = BitmapFactory.decodeByteArray(task.getResult(),0,task.getResult().length);
-//                                                    Log.i("BITMAP", "onComplete: " + bitmap.toString());
-//                                                    images.add(bitmap);
-//                                                }
-//                                            }
-//                                        });
                                     }
                                 }
 
