@@ -24,6 +24,7 @@ public class BioDialog extends DialogFragment {
     Button dismiss;
     private EditText bioET;
 
+    
     /**
      * Inflatina dialoga ir nustato mygtuku veikima
      * @param inflater
