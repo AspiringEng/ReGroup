@@ -27,6 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText,GoogleAppIndexingWarning">
+        <activity android:name=".ChangePassword"></activity>
         <activity android:name=".ProfileFilling">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
@@ -124,20 +125,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Events.EventManagementActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Profile_package.ShowProfileActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".Events.ChooseParticipantsActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

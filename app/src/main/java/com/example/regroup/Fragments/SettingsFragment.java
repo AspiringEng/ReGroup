@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.regroup.ChangePassword;
 import com.example.regroup.Events.EventManagementActivity;
 import com.example.regroup.LoginScreen;
 import com.example.regroup.MainActivity;
 import com.example.regroup.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.internal.FederatedSignInActivity;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
@@ -33,6 +35,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         Button del = view.findViewById(R.id.delete);
         del.setOnClickListener(this);
+
+        Button change = view.findViewById(R.id.changePass);
+        change.setOnClickListener(this);
 
         Button eventMgmtBtn = view.findViewById(R.id.manageEventsBtn);
 
@@ -53,9 +58,20 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             case  R.id.delete:
                 delete();
                 break;
+            case R.id.changePass:
+                open_password();
+                break;
 
         }
     }
+
+    public void open_password(){
+
+        Intent intent = new Intent(getActivity(), ChangePassword.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
 
     public void openLogin(){
         firebaseAuth = FirebaseAuth.getInstance();
