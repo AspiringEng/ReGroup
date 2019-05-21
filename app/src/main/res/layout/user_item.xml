@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/profile_image"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/default_profile_outlined"
+        tools:src="@drawable/default_profile_outlined" />
 
     <TextView
         android:id="@+id/username"
