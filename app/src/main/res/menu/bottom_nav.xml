@@ -9,15 +9,15 @@
 
     <item
         android:id="@+id/nav_events"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@android:drawable/star_on"
         android:title="Events" />
 
     <item
         android:id="@+id/nav_matches"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/messages"
         android:title="Matches" />
     <item
         android:id="@+id/nav_myProfile"
-        android:icon="@drawable/ic_contacts_black_24dp"
+        android:icon="@drawable/default_profile"
         android:title="My Profile" />
 </menu>
