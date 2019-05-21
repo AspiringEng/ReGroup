@@ -8,6 +8,13 @@
     android:background="@drawable/background_1080x1920_tinted">
 
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView3"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="@drawable/moving" />
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -22,6 +29,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:background="#75252525"
+                android:fontFamily="sans-serif-medium"
+                android:minHeight="130px"
+                android:paddingTop="25px"
+                android:text="A new profile picture ? Why not give it a try ..."
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/profileIMG"

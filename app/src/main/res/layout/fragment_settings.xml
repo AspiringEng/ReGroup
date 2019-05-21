@@ -8,6 +8,13 @@
     android:layout_height="match_parent">
 
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView2"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:background="@drawable/moving" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="194dp"
