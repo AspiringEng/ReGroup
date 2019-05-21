@@ -68,9 +68,12 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public void delete(){
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseAuth.signOut();
+
         firebaseUser.delete();
         Intent intent = new Intent(getActivity(), LoginScreen.class);
         startActivity(intent);
+        getActivity().finish();
 
     }
 
